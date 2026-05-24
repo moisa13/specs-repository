@@ -1,0 +1,49 @@
+# Specs Repository — Index
+
+> Catálogo de especificações de comportamento reutilizáveis.
+
+---
+
+## Arquivos raiz
+
+| Arquivo | Para quem |
+|---------|-----------|
+| [`README.md`](./README.md) | Todos — visão geral e convenções do repositório |
+| [`agents.md`](./agents.md) | Code Agents — leia antes de qualquer implementação |
+| [`contributing.md`](./contributing.md) | Colaboradores — fluxo Git Flow para criar e editar specs |
+
+---
+
+## Como usar este repositório
+
+Consulte [`_meta/how-to-use.md`](./_meta/how-to-use.md) para o guia completo.
+Consulte [`_meta/prompt-recipes.md`](./_meta/prompt-recipes.md) para templates de prompt prontos.
+
+---
+
+## Módulos disponíveis
+
+| Módulo | Descrição | Versão | Status |
+|--------|-----------|--------|--------|
+| — | — | — | — |
+
+---
+
+## Legenda de status
+
+| Status | Significado |
+|--------|-------------|
+| 🚧 template | Estrutura criada, conteúdo a preencher |
+| 📝 rascunho | Em elaboração, não usar em produção |
+| ✅ pronto | Revisado e aprovado para uso |
+| ⚠️ desatualizado | Implementações existentes podem estar desalinhadas |
+| 🗄️ depreciado | Substituído por outro módulo, não usar em novos projetos |
+
+---
+
+## Adicionando novos módulos
+
+1. Copie `_template/` para o domínio adequado: `cp -r _template/ [domínio]/[módulo]/`
+2. Adicione o módulo neste index.md com status `🚧 template`
+3. Preencha todos os arquivos seguindo [`_meta/how-to-write.md`](./_meta/how-to-write.md)
+4. Atualize o status conforme o progresso
