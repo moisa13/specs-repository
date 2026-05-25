@@ -63,5 +63,5 @@ O campo `error` é sempre SNAKE_CASE maiúsculo. Ver mapeamento completo em `set
 ## Notas
 
 - Substituir `<nome-do-projeto>` pelo nome real do projeto
-- Manter o atributo de autoria de cada seção (`setup/nestjs-init`, `setup/nestjs-database-init`, etc.) para rastrear qual spec originou cada convenção
+- Manter o atributo de autoria de cada seção (`setup/nestjs-init`, `setup/nestjs-database`, etc.) para rastrear qual spec originou cada convenção
 - Ao aplicar uma nova spec, acrescentar a seção correspondente ao final do arquivo — nunca remover seções existentes sem justificativa

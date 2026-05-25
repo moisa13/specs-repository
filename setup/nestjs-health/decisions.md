@@ -134,17 +134,17 @@ O `AllExceptionsFilter` do `setup/nestjs-init` é registrado globalmente e inter
 **Status:** ✅ Aceito
 
 ### Contexto
-O readiness probe poderia ser configurado apenas com verificação de memória, sem depender de `setup/nestjs-database-init`. Isso tornaria a spec utilizável em projetos sem banco de dados. No entanto, o banco é a dependência externa mais crítica em projetos NestJS com TypeORM — omiti-la do readiness tornaria o endpoint pouco útil para o caso de uso principal.
+O readiness probe poderia ser configurado apenas com verificação de memória, sem depender de `setup/nestjs-database`. Isso tornaria a spec utilizável em projetos sem banco de dados. No entanto, o banco é a dependência externa mais crítica em projetos NestJS com TypeORM — omiti-la do readiness tornaria o endpoint pouco útil para o caso de uso principal.
 
 ### Opções consideradas
 
 | Opção | Vantagens | Desvantagens |
 |-------|-----------|--------------|
-| Indicador de banco opcional | Spec utilizável sem `nestjs-database-init` | Aumenta a complexidade da spec; exige configuração condicional |
+| Indicador de banco opcional | Spec utilizável sem `nestjs-database` | Aumenta a complexidade da spec; exige configuração condicional |
 | Indicador de banco mandatório (escolhida) | Spec simples e direta; cobre o caso de uso padrão do repositório | Não utilizável em projetos sem banco sem adaptação |
 
 ### Decisão
-`setup/nestjs-database-init` é pré-requisito obrigatório nesta versão. O `TypeOrmHealthIndicator` é sempre incluído no readiness probe.
+`setup/nestjs-database` é pré-requisito obrigatório nesta versão. O `TypeOrmHealthIndicator` é sempre incluído no readiness probe.
 
 ### Consequências
 - Projetos sem banco de dados não podem usar esta spec sem modificação

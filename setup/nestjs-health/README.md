@@ -30,7 +30,7 @@ Descreve como configurar endpoints de health check em um projeto NestJS seguindo
 ## Módulos relacionados
 
 - `setup/nestjs-init` — pré-requisito; disponibiliza `ConfigService` e a estrutura global
-- `setup/nestjs-database-init` — fornece a conexão TypeORM usada pelo `TypeOrmHealthIndicator`
+- `setup/nestjs-database` — fornece a conexão TypeORM usada pelo `TypeOrmHealthIndicator`
 - `observability/nestjs-metrics` — métricas de desempenho (a criar)
 
 ## Arquivos desta spec

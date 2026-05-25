@@ -62,7 +62,7 @@ Garantir que todo projeto NestJS para APIs parta de uma estrutura consistente, c
 
 ## O que esta spec NÃO cobre
 
-- Configuração de ORM/banco de dados → ver `setup/nestjs-database-init`
+- Configuração de ORM/banco de dados → ver `setup/nestjs-database`
 - Estratégias de autenticação → ver `auth/` (a criar)
 - Logging estruturado → ver `observability/logging` (a criar)
 - Estrutura e configuração de testes → ver `setup/testing` (a criar)

@@ -7,7 +7,7 @@
 | Módulo | Obrigatório | O que usa |
 |--------|-------------|-----------|
 | `setup/nestjs-init` | ✅ | `ConfigService` para leitura dos limites de memória |
-| `setup/nestjs-database-init` | ✅ | Conexão TypeORM injetada automaticamente pelo `TypeOrmHealthIndicator` |
+| `setup/nestjs-database` | ✅ | Conexão TypeORM injetada automaticamente pelo `TypeOrmHealthIndicator` |
 
 ---
 

@@ -16,7 +16,7 @@
 ## Pré-requisitos
 
 - [ ] `setup/nestjs-init` aplicado — `ConfigService` global disponível
-- [ ] `setup/nestjs-database-init` aplicado — conexão TypeORM disponível para o indicador de banco
+- [ ] `setup/nestjs-database` aplicado — conexão TypeORM disponível para o indicador de banco
 - [ ] Node.js >= 20
 - [ ] pnpm instalado
 

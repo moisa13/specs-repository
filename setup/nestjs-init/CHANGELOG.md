@@ -32,7 +32,7 @@
 - `contracts.md`: documenta que o `eslint.config.mjs` gerado pelo CLI não inclui `dist/**` no `ignores` e que isso causa falha no lint após o primeiro build
 - `contracts.md`: documenta o conteúdo mínimo do `.gitignore` e explica que o arquivo não é gerado automaticamente quando `--skip-git` é usado
 - `acceptance.md`: adiciona `APP_DESCRIPTION` à lista de variáveis obrigatórias no AC-01
-- `README.md`, `behavior.md`, `context.md`, `integration.md`: substitui referência `setup/database (a criar)` por `setup/nestjs-database-init`
+- `README.md`, `behavior.md`, `context.md`, `integration.md`: substitui referência `setup/database (a criar)` por `setup/nestjs-database`
 
 ---
 
