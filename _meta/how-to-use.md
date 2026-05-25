@@ -97,7 +97,7 @@ Após a implementação, declare as specs utilizadas no arquivo `specs.json` na 
 {
   "name": "nome-do-projeto",
   "specs": {
-    "setup/nestjs-init": {
+    "setup/nestjs/nestjs-init": {
       "version": "0.1.0",
       "appliedAt": "YYYY-MM-DD",
       "appliedBy": "Nome"
@@ -106,7 +106,7 @@ Após a implementação, declare as specs utilizadas no arquivo `specs.json` na 
 }
 ```
 
-- A chave de cada spec segue o caminho relativo dentro deste repositório (ex: `setup/nestjs-init`).
+- A chave de cada spec segue o caminho relativo dentro deste repositório (ex: `setup/nestjs/nestjs-init`).
 - `version` deve corresponder à versão declarada no `README.md` da spec no momento do uso.
 - Quando uma spec evoluir para uma versão MAJOR, projetos com a versão anterior registrada devem revisar a implementação em relação ao que mudou.
 

@@ -23,12 +23,12 @@ Descreve o conjunto mínimo de instalações, estrutura de diretórios e configu
 ## Quando NÃO usar
 
 - Para adicionar features a um projeto já inicializado — use a spec da feature em questão
-- Para configurar banco de dados — ver `setup/nestjs-database-init`
+- Para configurar banco de dados — ver `setup/nestjs/nestjs-database`
 - Para configurar autenticação — ver `auth/` (a criar)
 
 ## Módulos relacionados
 
-- `setup/nestjs-database-init` — configuração de banco de dados com TypeORM
+- `setup/nestjs/nestjs-database` — configuração de banco de dados com TypeORM
 - `auth/` — autenticação e autorização (a criar)
 
 ## Arquivos desta spec

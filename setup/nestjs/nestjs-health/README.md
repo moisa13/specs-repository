@@ -17,7 +17,7 @@ Descreve como configurar endpoints de health check em um projeto NestJS seguindo
 
 ## Quando usar
 
-- Ao adicionar observabilidade a um projeto NestJS já inicializado com `setup/nestjs-init`
+- Ao adicionar observabilidade a um projeto NestJS já inicializado com `setup/nestjs/nestjs-init`
 - Ao configurar probes de liveness e readiness em Kubernetes
 - Ao expor endpoints de health para load balancers e ferramentas de monitoramento
 
@@ -25,12 +25,12 @@ Descreve como configurar endpoints de health check em um projeto NestJS seguindo
 
 - Para métricas de desempenho (latência, throughput) — ver `observability/nestjs-metrics` (a criar)
 - Para logging estruturado — ver `observability/nestjs-logging` (a criar)
-- Antes de ter `setup/nestjs-init` aplicado
+- Antes de ter `setup/nestjs/nestjs-init` aplicado
 
 ## Módulos relacionados
 
-- `setup/nestjs-init` — pré-requisito; disponibiliza `ConfigService` e a estrutura global
-- `setup/nestjs-database-init` — fornece a conexão TypeORM usada pelo `TypeOrmHealthIndicator`
+- `setup/nestjs/nestjs-init` — pré-requisito; disponibiliza `ConfigService` e a estrutura global
+- `setup/nestjs/nestjs-database` — fornece a conexão TypeORM usada pelo `TypeOrmHealthIndicator`
 - `observability/nestjs-metrics` — métricas de desempenho (a criar)
 
 ## Arquivos desta spec

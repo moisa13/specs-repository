@@ -6,7 +6,7 @@
 
 | Módulo | Obrigatório | O que usa |
 |--------|-------------|-----------|
-| `setup/nestjs-init` | ✅ | `ConfigService` para leitura de todas as variáveis de ambiente de banco |
+| `setup/nestjs/nestjs-init` | ✅ | `ConfigService` para leitura de todas as variáveis de ambiente de banco |
 
 ---
 
@@ -15,7 +15,7 @@
 | Módulo | Como usa este módulo |
 |--------|----------------------|
 | Qualquer módulo de feature | Usa `TypeOrmModule.forFeature([Entidade])` para registrar suas entidades; a conexão global configurada aqui é usada automaticamente |
-| `setup/nestjs-health` | Registra o `TypeOrmHealthIndicator` usando a conexão configurada aqui — não requer alteração no `DatabaseModule` |
+| `setup/nestjs/nestjs-health` | Registra o `TypeOrmHealthIndicator` usando a conexão configurada aqui — não requer alteração no `DatabaseModule` |
 | `auth/` (a criar) | Seus módulos de domínio (usuários, sessões) registram entidades via `TypeOrmModule.forFeature` |
 
 ---

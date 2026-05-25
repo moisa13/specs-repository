@@ -17,19 +17,19 @@ Descreve como configurar o TypeORM com PostgreSQL em um projeto NestJS já inici
 
 ## Quando usar
 
-- Ao adicionar banco de dados a um projeto NestJS já inicializado com `setup/nestjs-init`
+- Ao adicionar banco de dados a um projeto NestJS já inicializado com `setup/nestjs/nestjs-init`
 - Ao auditar se a configuração de banco de um projeto existente segue o padrão esperado
 
 ## Quando NÃO usar
 
 - Para criar entidades ou repositórios — responsabilidade da spec de cada feature
-- Para configurar health check de banco — ver `setup/nestjs-health`
-- Antes de ter `setup/nestjs-init` aplicado — o `ConfigService` deve estar disponível
+- Para configurar health check de banco — ver `setup/nestjs/nestjs-health`
+- Antes de ter `setup/nestjs/nestjs-init` aplicado — o `ConfigService` deve estar disponível
 
 ## Módulos relacionados
 
-- `setup/nestjs-init` — pré-requisito; disponibiliza `ConfigService` e a estrutura global
-- `setup/nestjs-health` — usa a conexão configurada aqui para expor o `TypeOrmHealthIndicator`
+- `setup/nestjs/nestjs-init` — pré-requisito; disponibiliza `ConfigService` e a estrutura global
+- `setup/nestjs/nestjs-health` — usa a conexão configurada aqui para expor o `TypeOrmHealthIndicator`
 
 ## Arquivos desta spec
 
