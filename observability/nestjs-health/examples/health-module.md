@@ -4,7 +4,7 @@
 
 Módulo de observabilidade que registra o controller de health check. Não exporta nenhum provider e não é global.
 
-Caminho do arquivo: `src/health/health.module.ts`
+Caminho do arquivo: `src/modules/health/health.module.ts`
 
 ---
 
