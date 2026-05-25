@@ -8,6 +8,17 @@
 
 ---
 
+## [0.2.0] — 2026-05
+
+### Adicionado
+- `contracts.md`: seção "Adições ao agents.md" com 7 convenções — `DatabaseModule` global (não registrar `TypeOrmModule` em módulos de feature), variáveis `DB_*` no schema Joi, `synchronize: false` sem exceções, migrations automáticas apenas em `development`, `pnpm migration:run` em produção, nomenclatura PascalCase e caminho `src/database/migrations/`
+- `acceptance.md`: seção de cobertura mínima de testes com 6 cenários e2e/unitários cobrindo conexão, validação Joi, auto-execução de migrations e `synchronize: false`
+
+### Corrigido
+- `README.md`: corrige escape de markdown na linha `Spec version` (renderizava `\*\*` em vez de negrito)
+
+---
+
 ## [0.1.1] — 2026-05
 
 ### Corrigido
