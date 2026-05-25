@@ -119,6 +119,19 @@ A aplicação expõe uma rota `GET /` que retorna informações básicas sobre s
 | `timestamp` | string | ISO 8601 UTC gerado no momento da requisição |
 | `uptime` | number | `process.uptime()` em segundos |
 
+### DTO de resposta
+
+| Classe | Finalidade |
+|--------|------------|
+| `AppInfoResponseDto` | Representa a resposta do `GET /` — deve ser uma `class` com `@ApiProperty()` em cada campo para que o Swagger gere o schema corretamente |
+
+### Decorators Swagger
+
+| Endpoint | Decorators |
+|----------|------------|
+| Controller | `@ApiTags('app-info')` |
+| `GET /` | `@ApiOperation({ summary: 'Retorna metadados da aplicação' })`, `@ApiOkResponse({ type: AppInfoResponseDto })` |
+
 ---
 
 ## Estrutura de diretórios — crescimento com features
