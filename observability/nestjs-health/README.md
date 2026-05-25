@@ -4,10 +4,10 @@
 
 ---
 
-**Spec version:** 0.1.0
-\*\*Status:\*\* ✅ pronto
+**Spec version:** 0.2.0
+**Status:** ✅ pronto
 **Última revisão:** 2026-05
-**Revisado por:** —
+**Revisado por:** Moiséis Almeida
 
 ---
 

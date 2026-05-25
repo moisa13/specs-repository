@@ -12,8 +12,8 @@ Garantir que todo projeto NestJS exponha endpoints padronizados de liveness e re
 
 1. O pacote `@nestjs/terminus` é instalado via pnpm
 2. As variáveis de ambiente de memória são adicionadas ao schema Joi em `src/config/env.validation.ts` e ao `.env.example`
-3. O `HealthModule` é criado em `src/health/health.module.ts`
-4. O `HealthExceptionFilter` é criado em `src/health/health.exception-filter.ts` e o `HealthController` é criado em `src/health/health.controller.ts` decorado com `@UseFilters(HealthExceptionFilter)`, expondo `GET /health/live` e `GET /health/ready`
+3. O `HealthModule` é criado em `src/modules/health/health.module.ts`
+4. O `HealthExceptionFilter` é criado em `src/modules/health/health.exception-filter.ts` e o `HealthController` é criado em `src/modules/health/health.controller.ts` decorado com `@UseFilters(HealthExceptionFilter)`, expondo `GET /health/live` e `GET /health/ready`
 5. O `HealthModule` é registrado no `AppModule`
 6. A aplicação passa a responder em `/health/live` (liveness) e `/health/ready` (readiness)
 

@@ -69,3 +69,16 @@
 - `HealthModule` registrado em módulo de feature em vez do `AppModule`
 - Limites de memória hardcoded no código em vez de lidos do `ConfigService`
 - Formato de resposta diferente do padrão Terminus
+
+---
+
+## Cobertura mínima de testes
+
+> **Framework padrão:** Jest — instalado pelo NestJS CLI. Configuração completa de testes em `setup/testing` (a criar).
+
+- [ ] `GET /health/live` retorna 200 com aplicação no ar (e2e)
+- [ ] `GET /health/ready` retorna 200 com banco acessível e memória dentro dos limites (e2e)
+- [ ] `GET /health/ready` retorna 503 com banco indisponível (e2e)
+- [ ] `GET /health/live` retorna 200 mesmo com banco indisponível (e2e)
+- [ ] Múltiplos indicadores com falha são reportados simultaneamente no campo `error` (e2e)
+- [ ] Limites de memória padrão (150 MB heap, 300 MB RSS) são aplicados quando variáveis não estão definidas (teste unitário no schema Joi)

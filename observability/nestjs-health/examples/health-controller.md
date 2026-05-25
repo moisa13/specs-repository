@@ -4,7 +4,7 @@
 
 Controller com dois endpoints: `/health/live` (liveness) e `/health/ready` (readiness). Lê os limites de memória do `ConfigService`.
 
-Caminho do arquivo: `src/health/health.controller.ts`
+Caminho do arquivo: `src/modules/health/health.controller.ts`
 
 ---
 
@@ -33,6 +33,9 @@ import { HealthExceptionFilter } from './health.exception-filter';
 class HealthIndicatorResultDto {
   @ApiProperty({ example: 'up' })
   status: string;
+
+  @ApiProperty({ required: false, example: 'connect ECONNREFUSED 127.0.0.1:5432' })
+  message?: string;
 }
 
 class HealthCheckResponseDto {

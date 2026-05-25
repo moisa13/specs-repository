@@ -78,3 +78,16 @@
 - `DatabaseModule` registrado em módulo de feature em vez do `AppModule`
 - `data-source.ts` importado pela aplicação NestJS (deve ser usado apenas pelo CLI)
 - Scripts de migration ausentes no `package.json`
+
+---
+
+## Cobertura mínima de testes
+
+> **Framework padrão:** Jest — instalado pelo NestJS CLI. Configuração completa de testes em `setup/testing` (a criar).
+
+- [ ] Aplicação conecta ao banco com variáveis válidas e sobe sem erros (e2e)
+- [ ] Aplicação encerra com variável de banco ausente antes de tentar conectar (teste unitário no schema Joi)
+- [ ] Migrations são executadas automaticamente em `NODE_ENV=development` (e2e com banco real)
+- [ ] Migrations não são executadas automaticamente em `NODE_ENV=production` (e2e)
+- [ ] `pnpm migration:run` executa migrations pendentes com sucesso (e2e com banco real)
+- [ ] Schema do banco não é alterado automaticamente quando `synchronize: false` (e2e com banco real)

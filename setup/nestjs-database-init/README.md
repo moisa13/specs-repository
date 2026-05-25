@@ -4,7 +4,7 @@
 
 ---
 
-\*\*Spec version:\*\* 0.1.1
+**Spec version:** 0.2.0
 **Status:** ✅ pronto
 **Última revisão:** 2026-05
 **Revisado por:** Moiséis Almeida
