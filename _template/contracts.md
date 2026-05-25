@@ -45,3 +45,25 @@
 |----------------|----------|-------------------|
 | [ex: `INVALID_INPUT` / 400] | Entrada inválida | `errors[]` com campos e mensagens |
 | [ex: `RULE_VIOLATION` / 422] | Regra de negócio violada | `reason` com descrição |
+
+---
+
+## Adições ao agents.md
+
+> Inclua esta seção quando a spec introduzir pelo menos uma das seguintes convenções duráveis:
+> - estrutura de diretórios ou nomenclatura de arquivos que o agente precisa respeitar ao criar novos arquivos
+> - regras de runtime que o agente não conseguiria derivar do código existente (ex: ordem de registro de providers, globs de paths)
+> - restrições de uso de uma biblioteca ou padrão adotado (ex: sempre usar `getOrThrow`, nunca `synchronize: true` em produção)
+>
+> Omita esta seção se a spec apenas descreve comportamento de produto (regras de negócio, fluxos de usuário) sem gerar artefatos ou convenções técnicas que o agente precisará replicar em implementações futuras.
+>
+> **Nota:** `setup/nestjs-init` é a única spec que **cria** o `agents.md`. Todas as demais apenas acrescentam seções a ele com `Ao aplicar esta spec, acrescentar a seção abaixo ao agents.md do projeto:`.
+
+Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
+
+```markdown
+## [Nome do módulo] ([caminho/da/spec])
+
+- [convenção 1]
+- [convenção 2]
+```
