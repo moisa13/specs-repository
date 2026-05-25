@@ -102,6 +102,27 @@ Se algum critério não puder ser atendido com as informações disponíveis, si
 
 ---
 
+## Após implementar
+
+Após confirmar que todos os critérios de `acceptance.md` foram atendidos, crie ou atualize o arquivo `specs.json` na raiz do projeto com a spec e versão utilizadas:
+
+```json
+{
+  "name": "[nome do projeto]",
+  "specs": {
+    "[caminho/da/spec]": {
+      "version": "[versão do README.md da spec]",
+      "appliedAt": "[data de hoje em YYYY-MM-DD]",
+      "appliedBy": "[nome do responsável, se disponível]"
+    }
+  }
+}
+```
+
+Se o `specs.json` já existir, adicione a nova entrada sem remover as existentes.
+
+---
+
 ## Estrutura do repositório
 
 ```
