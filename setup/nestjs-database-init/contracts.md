@@ -147,3 +147,21 @@ O nome deve descrever a operação no formato `PascalCase`:
 - `RenameColumnNameToFullName`
 
 Exemplo de arquivo gerado: `src/database/migrations/1716234567890-CreateUsersTable.ts`
+
+---
+
+## Adições ao agents.md
+
+Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
+
+```markdown
+## Banco de dados (setup/nestjs-database-init)
+
+- `DatabaseModule` é global e disponibiliza a conexão TypeORM para todos os módulos — não registrar `TypeOrmModule` em módulos de feature
+- Variáveis `DB_*` devem constar no schema Joi em `src/config/env.validation.ts` — atualizar o schema ao introduzir novas variáveis de banco
+- `synchronize` é sempre `false` — nunca habilitar, nem em desenvolvimento
+- Migrations rodam automaticamente apenas em `NODE_ENV === 'development'`; em produção, executar `pnpm migration:run` manualmente antes de subir a aplicação
+- Nomenclatura de migrations: PascalCase descrevendo a operação (`CreateUsersTable`, `AddEmailIndexToUsers`)
+- Caminho das migrations: `src/database/migrations/`
+- Nunca fazer alterações de schema diretamente no banco — toda mudança passa por migration
+```
