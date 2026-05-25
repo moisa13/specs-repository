@@ -4,7 +4,7 @@
 
 Filtro de exceção específico para o `HealthController`. Captura `HealthCheckError` antes que o `AllExceptionsFilter` global do `setup/nestjs-init` o intercepte — sem este filtro, o corpo Terminus seria substituído pelo formato de erro padrão da aplicação.
 
-Caminho do arquivo: `src/health/health.exception-filter.ts`
+Caminho do arquivo: `src/modules/health/health.exception-filter.ts`
 
 ---
 

@@ -8,10 +8,11 @@
 
 ```
 src/
-└── health/
-    ├── health.controller.ts
-    ├── health.exception-filter.ts
-    └── health.module.ts
+└── modules/
+    └── health/
+        ├── health.controller.ts
+        ├── health.exception-filter.ts
+        └── health.module.ts
 ```
 
 ---
@@ -56,7 +57,7 @@ HEALTH_MEMORY_RSS_THRESHOLD_MB=300
 
 | Classe | Finalidade |
 |--------|------------|
-| `HealthIndicatorResultDto` | Representa o resultado de um indicador individual (`{ status: string }`) |
+| `HealthIndicatorResultDto` | Representa o resultado de um indicador individual (`{ status: string; message?: string }`) — `message` presente apenas em indicadores com falha |
 | `HealthCheckResponseDto` | Envelope completo do Terminus (`status`, `info`, `error`, `details`) |
 
 Ambas as classes devem ser registradas explicitamente no Swagger via `@ApiExtraModels(HealthIndicatorResultDto, HealthCheckResponseDto)` no controller. Os campos do tipo `Record<string, HealthIndicatorResultDto>` devem usar `getSchemaPath(HealthIndicatorResultDto)` no `additionalProperties` para que o schema seja resolvido corretamente.
@@ -145,3 +146,20 @@ O Terminus retorna um envelope padrão em ambos os endpoints. Os campos `info` e
 | Banco de dados | `database` | `/health/ready` |
 | Memória heap | `memory_heap` | `/health/ready` |
 | Memória RSS | `memory_rss` | `/health/ready` |
+
+---
+
+## Adições ao agents.md
+
+Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
+
+```markdown
+## Health check (observability/nestjs-health)
+
+- `/health/live` nunca verifica dependências externas — apenas confirma que o processo está respondendo; sempre retorna 200
+- `/health/ready` verifica banco de dados e memória (heap e RSS); retorna 200 quando todos os indicadores estão saudáveis e 503 quando qualquer um falha; novos indicadores de dependências externas entram aqui
+- O Terminus verifica todos os indicadores em paralelo; a resposta reporta cada um individualmente nos campos `info`, `error` e `details` — um indicador com falha não impede o reporte dos demais
+- Os limites de memória têm padrões via Joi (`HEALTH_MEMORY_HEAP_THRESHOLD_MB=150`, `HEALTH_MEMORY_RSS_THRESHOLD_MB=300`) — sobrepor via `.env` se o perfil de memória da aplicação exigir
+- Endpoints de health não têm autenticação — devem ser acessíveis por orquestradores e load balancers sem credenciais
+- O `HealthExceptionFilter` preserva o formato Terminus na resposta 503 — não modificar nem remover
+```

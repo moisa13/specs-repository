@@ -8,6 +8,21 @@
 
 ---
 
+## [0.2.0] — 2026-05
+
+### Adicionado
+- `contracts.md`: seção "Adições ao agents.md" com 6 convenções — separação liveness/readiness com HTTP status explícitos (200/503), verificação paralela de indicadores com reporte individual, limites de memória padrão via Joi, endpoints sem autenticação e preservação do `HealthExceptionFilter`
+- `acceptance.md`: seção de cobertura mínima de testes com 6 cenários e2e/unitários cobrindo liveness, readiness, banco down e limites de memória
+
+### Corrigido
+- `contracts.md`: `HealthIndicatorResultDto` atualizado para `{ status: string; message?: string }` — campo `message` estava ausente e é enviado pelo Terminus em indicadores com falha (HTTP 503)
+- `examples/health-controller.md`: `HealthIndicatorResultDto` recebe `message?: string` com `@ApiProperty({ required: false })` alinhando o exemplo ao contrato
+- `examples/registrar-health-no-app-module.md`: corrige ordem — `AppInfoModule` deve preceder `HealthModule` no `AppModule`, respeitando a progressão de aplicação das specs
+- `behavior.md`, `examples/health-exception-filter.md`, `examples/health-module.md`: caminhos atualizados de `src/health/` para `src/modules/health/`
+- `README.md`: corrige escape de markdown na linha `Status`; preenche campo `Revisado por`
+
+---
+
 ## [0.1.0] — 2026-05
 
 ### Adicionado
