@@ -17,13 +17,15 @@ Garantir que todo projeto NestJS para APIs parta de uma estrutura consistente, c
 5. CORS é configurado com as origens lidas de `CORS_ORIGIN`, separadas por vírgula e convertidas em array antes de serem passadas ao `enableCors`
 6. A rota `GET /` retorna `APP_NAME`, `APP_DESCRIPTION`, versão do `package.json`, timestamp e uptime em tempo real
 7. A documentação da API está disponível em `/docs` apenas quando `NODE_ENV` não for `production`
-8. A aplicação sobe sem erros com todas as variáveis obrigatórias presentes
+8. O arquivo `agents.md` é criado na raiz do projeto com o conteúdo inicial definido em `contracts.md`; este é o único momento em que o arquivo é criado — specs subsequentes apenas acrescentam seções a ele
+9. A aplicação sobe sem erros com todas as variáveis obrigatórias presentes
 
 ---
 
 ## Regras de negócio
 
 - O módulo raiz registra dois tipos de módulos: (1) **infraestrutura** — configuração, banco de dados, logging, cache e outros serviços transversais; (2) **domínio** — módulos de feature que encapsulam seus próprios controllers, services e providers. O módulo raiz nunca deve definir controllers, services ou providers diretamente nele
+- Todos os módulos da aplicação — de infraestrutura ou de domínio — devem residir em `src/modules/`. Os diretórios `src/common/`, `src/config/` e `src/database/` são transversais e ficam fora dessa pasta
 - O ponto de entrada da aplicação não deve conter lógica inline além do bootstrap — configurações como Swagger e CORS devem ser encapsuladas em funções ou módulos dedicados
 - Variáveis de ambiente obrigatórias devem ser validadas por schema na inicialização; a aplicação deve encerrar com exit code 1 se alguma estiver ausente ou com formato inválido
 - A validação de dados de entrada deve rejeitar campos não declarados nos DTOs e converter tipos automaticamente
