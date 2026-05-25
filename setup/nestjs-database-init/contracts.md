@@ -18,12 +18,14 @@ src/
 
 ## Pacotes a instalar
 
-| Pacote | Versão mínima | Finalidade |
-|--------|---------------|------------|
-| `@nestjs/typeorm` | ^10.0.0 | Integração TypeORM com NestJS |
-| `typeorm` | ^0.3.0 | ORM e gerenciamento de migrations |
-| `pg` | ^8.0.0 | Driver PostgreSQL |
-| `dotenv` | ^16.0.0 | Carrega o `.env` no `data-source.ts`, fora do contexto NestJS |
+| Pacote | Versão mínima | Comando de instalação |
+|--------|---------------|-----------------------|
+| `@nestjs/typeorm` | ^10.0.0 | `pnpm add @nestjs/typeorm` |
+| `typeorm` | ^0.3.0 | `pnpm add typeorm@^0.3.0` |
+| `pg` | ^8.0.0 | `pnpm add pg` |
+| `dotenv` | ^16.0.0 | `pnpm add dotenv` |
+
+> O `typeorm` resolve para `1.x` se instalado sem pin de versão (`pnpm add typeorm`). A versão `^0.3.0` é obrigatória — usar o comando exato da tabela acima.
 
 > O pnpm usa isolamento estrito de `node_modules`: apenas dependências declaradas diretamente no `package.json` do projeto são importáveis. O `dotenv` é dependência direta do `@nestjs/config`, não do projeto — portanto o `import * as dotenv from 'dotenv'` no `data-source.ts` falha em tempo de execução e no lint sem a instalação explícita.
 
