@@ -8,6 +8,19 @@
 
 ---
 
+## [0.3.0] — 2026-05
+
+### Adicionado
+- `behavior.md`: adiciona passo 8 ao fluxo principal — criação do `agents.md` na raiz do projeto ao aplicar a spec; documenta que esta spec é a única que cria o arquivo, as demais apenas acrescentam seções
+- `contracts.md`: documenta `agents.md` na estrutura de diretórios obrigatória com descrição do propósito e referência a `examples/gerar-agents-md.md`; documenta convenção `src/modules/` para módulos de feature e infraestrutura com lista de diretórios transversais (`src/common/`, `src/config/`, `src/database/`)
+- `examples/gerar-agents-md.md`: novo exemplo com o conteúdo inicial do `agents.md` — seções de estrutura do projeto, convenções de código, variáveis de ambiente, formato de resposta de erro e Swagger
+
+### Corrigido
+- `examples/configurar-app-module.md`: caminho de import do `AppInfoModule` atualizado de `./app-info/` para `./modules/app-info/`
+- `examples/implementar-app-info-module.md`: caminhos atualizados para `src/modules/app-info/`; import de `package.json` corrigido de `../../` para `../../../` (um nível a mais por causa do novo caminho)
+
+---
+
 ## [0.2.0] — 2026-05
 
 ### Adicionado
