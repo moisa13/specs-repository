@@ -61,7 +61,7 @@ Garantir que todo projeto NestJS tenha uma configuração de banco de dados cons
 ## O que esta spec NÃO cobre
 
 - Entidades, repositórios e padrões de acesso a dados → responsabilidade de cada spec de feature
-- Health check de banco de dados → ver `observability/health` (a criar)
+- Health check de banco de dados → ver `observability/nestjs-health`
 - Seeding de dados → não coberto por esta spec
 - Configuração de testes com banco → ver `setup/testing` (a criar)
 - Containerização do banco → ver `setup/docker` (a criar)

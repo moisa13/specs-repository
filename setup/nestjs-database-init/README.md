@@ -4,7 +4,7 @@
 
 ---
 
-**Spec version:** 0.1.0
+\*\*Spec version:\*\* 0.1.1
 **Status:** ✅ pronto
 **Última revisão:** 2026-05
 **Revisado por:** Moiséis Almeida
@@ -23,13 +23,13 @@ Descreve como configurar o TypeORM com PostgreSQL em um projeto NestJS já inici
 ## Quando NÃO usar
 
 - Para criar entidades ou repositórios — responsabilidade da spec de cada feature
-- Para configurar health check de banco — ver `observability/health` (a criar)
+- Para configurar health check de banco — ver `observability/nestjs-health`
 - Antes de ter `setup/nestjs-init` aplicado — o `ConfigService` deve estar disponível
 
 ## Módulos relacionados
 
 - `setup/nestjs-init` — pré-requisito; disponibiliza `ConfigService` e a estrutura global
-- `observability/health` — usa a conexão configurada aqui para expor o `TypeOrmHealthIndicator`
+- `observability/nestjs-health` — usa a conexão configurada aqui para expor o `TypeOrmHealthIndicator`
 
 ## Arquivos desta spec
 

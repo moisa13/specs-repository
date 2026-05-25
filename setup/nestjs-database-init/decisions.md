@@ -71,7 +71,7 @@ Em produção, aplicar migrations automaticamente no bootstrap pode causar falha
 | Automático em desenvolvimento, manual em produção (escolhida) | Desenvolvimento fluido; produção controlada | Diferença de comportamento entre ambientes (aceita e documentada) |
 
 ### Decisão
-`migrationsRun: config.get<string>('NODE_ENV') === 'development'`.
+`migrationsRun: config.getOrThrow<string>('NODE_ENV') === 'development'`.
 
 ### Consequências
 - Em desenvolvimento: migrations são aplicadas automaticamente ao subir a aplicação
