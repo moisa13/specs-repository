@@ -28,7 +28,7 @@ Garantir que todo projeto NestJS exponha endpoints padronizados de liveness e re
 - Os limites de memória são lidos do `ConfigService` — os valores padrão são 150 MB para heap e 300 MB para RSS
 - Ambos os endpoints retornam JSON no formato padrão do Terminus (ver `contracts.md`)
 - O `HealthModule` não é global e não exporta nenhum provider — nenhum outro módulo depende dele
-- O `AllExceptionsFilter` global do `setup/nestjs-init` intercepta toda exceção, incluindo a `ServiceUnavailableException` que o Terminus 11 lança quando qualquer indicador falha — sem tratamento específico, o payload Terminus é destruído e substituído pelo formato de erro padrão da aplicação
+- O `AllExceptionsFilter` global do `setup/nestjs/nestjs-init` intercepta toda exceção, incluindo a `ServiceUnavailableException` que o Terminus 11 lança quando qualquer indicador falha — sem tratamento específico, o payload Terminus é destruído e substituído pelo formato de erro padrão da aplicação
 - O `HealthController` deve ser decorado com `@UseFilters(HealthExceptionFilter)`, um filtro específico que captura `ServiceUnavailableException` antes do filtro global e devolve o payload original do Terminus via `exception.getResponse()` com HTTP 503; os demais erros não capturados pelo filtro continuam sendo tratados pelo `AllExceptionsFilter`
 - O `HealthController` é documentado no Swagger com `@ApiTags('health')` e `@ApiExtraModels(HealthIndicatorResultDto, HealthCheckResponseDto)` no nível do controller; cada endpoint recebe `@ApiOperation`, `@ApiOkResponse({ type: HealthCheckResponseDto })` e, onde aplicável, `@ApiServiceUnavailableResponse`
 

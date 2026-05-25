@@ -2,7 +2,7 @@
 
 ## Contexto
 
-O `DatabaseModule` é registrado no `AppModule` como módulo de infraestrutura, após o `ConfigModule`. Substitui a versão sem banco do `AppModule` definida em `setup/nestjs-init`.
+O `DatabaseModule` é registrado no `AppModule` como módulo de infraestrutura, após o `ConfigModule`. Substitui a versão sem banco do `AppModule` definida em `setup/nestjs/nestjs-init`.
 
 Caminho do arquivo: `src/app.module.ts`
 

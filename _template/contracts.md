@@ -57,7 +57,7 @@
 >
 > Omita esta seção se a spec apenas descreve comportamento de produto (regras de negócio, fluxos de usuário) sem gerar artefatos ou convenções técnicas que o agente precisará replicar em implementações futuras.
 >
-> **Nota:** `setup/nestjs-init` é a única spec que **cria** o `agents.md`. Todas as demais apenas acrescentam seções a ele com `Ao aplicar esta spec, acrescentar a seção abaixo ao agents.md do projeto:`.
+> **Nota:** `setup/nestjs/nestjs-init` é a única spec que **cria** o `agents.md`. Todas as demais apenas acrescentam seções a ele com `Ao aplicar esta spec, acrescentar a seção abaixo ao agents.md do projeto:`.
 
 Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
 

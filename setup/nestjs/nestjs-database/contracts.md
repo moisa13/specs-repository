@@ -157,7 +157,7 @@ Exemplo de arquivo gerado: `src/database/migrations/1716234567890-CreateUsersTab
 Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
 
 ```markdown
-## Banco de dados (setup/nestjs-database)
+## Banco de dados (setup/nestjs/nestjs-database)
 
 - `DatabaseModule` é global e disponibiliza a conexão TypeORM para todos os módulos — não registrar `TypeOrmModule` em módulos de feature
 - Variáveis `DB_*` devem constar no schema Joi em `src/config/env.validation.ts` — atualizar o schema ao introduzir novas variáveis de banco

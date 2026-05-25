@@ -2,7 +2,7 @@
 
 ## Contexto
 
-Filtro de exceção específico para o `HealthController`. Captura `ServiceUnavailableException` (lançada pelo `@nestjs/terminus` 11 quando qualquer indicador falha) antes que o `AllExceptionsFilter` global do `setup/nestjs-init` o intercepte — sem este filtro, o payload Terminus seria substituído pelo formato de erro padrão da aplicação.
+Filtro de exceção específico para o `HealthController`. Captura `ServiceUnavailableException` (lançada pelo `@nestjs/terminus` 11 quando qualquer indicador falha) antes que o `AllExceptionsFilter` global do `setup/nestjs/nestjs-init` o intercepte — sem este filtro, o payload Terminus seria substituído pelo formato de erro padrão da aplicação.
 
 Caminho do arquivo: `src/modules/health/health.exception-filter.ts`
 

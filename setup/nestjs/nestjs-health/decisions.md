@@ -108,7 +108,7 @@ O ecossistema NestJS tem integração oficial com `@nestjs/terminus`, que já in
 **Status:** ✅ Aceito
 
 ### Contexto
-O `AllExceptionsFilter` do `setup/nestjs-init` é registrado globalmente e intercepta toda exceção, incluindo `HealthCheckError` (que o Terminus lança e que extends `HttpException`). Sem tratamento específico, o filtro destrói o corpo Terminus e retorna o formato de erro padrão da aplicação com status 503 mapeado incorretamente para `INTERNAL_SERVER_ERROR`.
+O `AllExceptionsFilter` do `setup/nestjs/nestjs-init` é registrado globalmente e intercepta toda exceção, incluindo `HealthCheckError` (que o Terminus lança e que extends `HttpException`). Sem tratamento específico, o filtro destrói o corpo Terminus e retorna o formato de erro padrão da aplicação com status 503 mapeado incorretamente para `INTERNAL_SERVER_ERROR`.
 
 ### Opções consideradas
 
@@ -134,7 +134,7 @@ O `AllExceptionsFilter` do `setup/nestjs-init` é registrado globalmente e inter
 **Status:** ✅ Aceito
 
 ### Contexto
-O readiness probe poderia ser configurado apenas com verificação de memória, sem depender de `setup/nestjs-database`. Isso tornaria a spec utilizável em projetos sem banco de dados. No entanto, o banco é a dependência externa mais crítica em projetos NestJS com TypeORM — omiti-la do readiness tornaria o endpoint pouco útil para o caso de uso principal.
+O readiness probe poderia ser configurado apenas com verificação de memória, sem depender de `setup/nestjs/nestjs-database`. Isso tornaria a spec utilizável em projetos sem banco de dados. No entanto, o banco é a dependência externa mais crítica em projetos NestJS com TypeORM — omiti-la do readiness tornaria o endpoint pouco útil para o caso de uso principal.
 
 ### Opções consideradas
 
@@ -144,8 +144,8 @@ O readiness probe poderia ser configurado apenas com verificação de memória, 
 | Indicador de banco mandatório (escolhida) | Spec simples e direta; cobre o caso de uso padrão do repositório | Não utilizável em projetos sem banco sem adaptação |
 
 ### Decisão
-`setup/nestjs-database` é pré-requisito obrigatório nesta versão. O `TypeOrmHealthIndicator` é sempre incluído no readiness probe.
+`setup/nestjs/nestjs-database` é pré-requisito obrigatório nesta versão. O `TypeOrmHealthIndicator` é sempre incluído no readiness probe.
 
 ### Consequências
 - Projetos sem banco de dados não podem usar esta spec sem modificação
-- Caso surja a necessidade, uma variante `setup/nestjs-health-minimal` pode ser criada cobrindo apenas liveness e memória, sem dependência de banco
+- Caso surja a necessidade, uma variante `setup/nestjs/nestjs-health-minimal` pode ser criada cobrindo apenas liveness e memória, sem dependência de banco
