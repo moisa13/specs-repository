@@ -37,6 +37,7 @@ Implemente o módulo de [nome do módulo] seguindo as especificações abaixo.
 **Entregáveis esperados:**
 - Implementação completa do módulo
 - Testes unitários cobrindo os critérios de acceptance.md
+- `specs.json` criado ou atualizado na raiz do projeto com a spec e versão utilizadas
 - Sem decisões de comportamento fora da spec — se algo não estiver coberto, pergunte antes de assumir
 ```
 
@@ -130,7 +131,9 @@ Siga as specs de ambos os módulos abaixo.
 
 ---
 
-**Importante:** Não reimplemente o módulo dependente. Apenas consuma-o conforme definido em integration.md.
+**Importante:**
+- Não reimplemente o módulo dependente. Apenas consuma-o conforme definido em integration.md.
+- Crie ou atualize o `specs.json` na raiz do projeto com a spec principal e versão utilizadas.
 ```
 
 ---
@@ -204,4 +207,5 @@ A spec do módulo de [nome] foi atualizada. Atualize a implementação para refl
 - Não refatore código não relacionado às mudanças
 - Atualize os testes afetados
 - Aponte qualquer mudança que possa ter impacto em outros módulos
+- Atualize o campo `version` da spec no `specs.json` do projeto para a nova versão
 ```

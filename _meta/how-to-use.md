@@ -18,6 +18,8 @@ O objetivo é: você monta um prompt com as specs relevantes, passa para um Code
 4. Montar o prompt com os arquivos relevantes
         ↓
 5. Passar ao Code Agent (Cursor, Claude Code, Codex, etc.)
+        ↓
+6. Registrar as specs utilizadas no specs.json do projeto
 ```
 
 ---
@@ -84,6 +86,29 @@ Se um comportamento necessário não está na spec:
 1. **Não implemente** — nem você, nem o agente. Comportamento não especificado pode ter restrições não óbvias.
 2. **Abra uma revisão** na spec correspondente e defina o comportamento explicitamente.
 3. **Se precisar avançar antes da revisão**, adicione uma restrição explícita no prompt descrevendo o comportamento esperado — nunca deixe o agente decidir sozinho.
+
+---
+
+## Registrando specs no projeto
+
+Após a implementação, declare as specs utilizadas no arquivo `specs.json` na raiz do projeto consumidor. Isso permite saber, no futuro, qual versão foi usada e quando uma revisão pode ser necessária.
+
+```json
+{
+  "name": "nome-do-projeto",
+  "specs": {
+    "setup/nestjs-init": {
+      "version": "0.1.0",
+      "appliedAt": "YYYY-MM-DD",
+      "appliedBy": "Nome"
+    }
+  }
+}
+```
+
+- A chave de cada spec segue o caminho relativo dentro deste repositório (ex: `setup/nestjs-init`).
+- `version` deve corresponder à versão declarada no `README.md` da spec no momento do uso.
+- Quando uma spec evoluir para uma versão MAJOR, projetos com a versão anterior registrada devem revisar a implementação em relação ao que mudou.
 
 ---
 
