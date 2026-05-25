@@ -15,7 +15,7 @@
 
 ## Pré-requisitos
 
-- [ ] `setup/nestjs-init` aplicado — `ConfigService` global disponível
+- [ ] `setup/nestjs/nestjs-init` aplicado — `ConfigService` global disponível
 - [ ] PostgreSQL acessível (em desenvolvimento: container Docker via `docker run` ou `docker compose`)
 - [ ] Node.js >= 20
 - [ ] pnpm instalado
@@ -36,7 +36,7 @@
 
 **Fora do escopo:**
 - Entidades e repositórios → responsabilidade de cada spec de feature
-- Health check de banco → ver `setup/nestjs-health`
+- Health check de banco → ver `setup/nestjs/nestjs-health`
 - Seeding de dados → não coberto por esta spec
 - Multi-tenancy ou múltiplas conexões → não coberto por esta spec
 - Configuração de testes com banco → ver `setup/testing` (a criar)

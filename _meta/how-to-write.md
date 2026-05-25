@@ -86,7 +86,7 @@ cp -r _template/ [domínio]/[módulo]/
 - Formato de saída esperado
 - Códigos de status ou resposta possíveis
 - **Adições ao agents.md** — inclua esta seção quando a spec introduzir convenções duráveis que um agente precisará replicar em implementações futuras: estrutura de diretórios, nomenclatura de arquivos, regras de runtime que não são deriváveis do código (ex: ordem de registro de providers), ou restrições de uso de biblioteca. Omita se a spec descreve apenas comportamento de produto sem gerar artefatos técnicos. O conteúdo deve ser escrito na voz do projeto — frases curtas que o agente possa aplicar sem precisar reler a spec.
-  - **Criação vs. adição:** `setup/nestjs-init` é a única spec que **cria** o `agents.md` do zero, com o conteúdo inicial definido em `contracts.md`. Todas as demais specs apenas acrescentam seções ao arquivo já existente.
+  - **Criação vs. adição:** `setup/nestjs/nestjs-init` é a única spec que **cria** o `agents.md` do zero, com o conteúdo inicial definido em `contracts.md`. Todas as demais specs apenas acrescentam seções ao arquivo já existente.
 
 ### integration.md
 - Dependências (quais outros módulos este usa)
