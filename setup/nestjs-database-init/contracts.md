@@ -73,15 +73,15 @@ O `TypeOrmModule.forRootAsync` deve ser configurado com as seguintes opções:
 | Opção | Valor | Observação |
 |-------|-------|------------|
 | `type` | `'postgres'` | Driver fixo |
-| `host` | `config.get<string>('DB_HOST')` | Via `ConfigService` |
-| `port` | `config.get<number>('DB_PORT')` | Via `ConfigService` |
-| `username` | `config.get<string>('DB_USER')` | Via `ConfigService` |
-| `password` | `config.get<string>('DB_PASSWORD')` | Via `ConfigService` |
-| `database` | `config.get<string>('DB_NAME')` | Via `ConfigService` |
-| `ssl` | `config.get<string>('DB_SSL') === 'true' ? { rejectUnauthorized: false } : false` | Via `ConfigService` |
+| `host` | `config.getOrThrow<string>('DB_HOST')` | Via `ConfigService` |
+| `port` | `config.getOrThrow<number>('DB_PORT')` | Via `ConfigService` |
+| `username` | `config.getOrThrow<string>('DB_USER')` | Via `ConfigService` |
+| `password` | `config.getOrThrow<string>('DB_PASSWORD')` | Via `ConfigService` |
+| `database` | `config.getOrThrow<string>('DB_NAME')` | Via `ConfigService` |
+| `ssl` | `config.getOrThrow<string>('DB_SSL') === 'true' ? { rejectUnauthorized: false } : false` | Via `ConfigService` |
 | `entities` | `[__dirname + '/../**/*.entity{.ts,.js}']` | Glob que encontra entidades de qualquer módulo de feature; `{.ts,.js}` suporta ts-node e código compilado |
 | `migrations` | `[__dirname + '/migrations/*{.ts,.js}']` | Encontra `.ts` com ts-node (desenvolvimento) e `.js` no código compilado (produção) |
-| `migrationsRun` | `config.get<string>('NODE_ENV') === 'development'` | Auto-executa apenas em desenvolvimento |
+| `migrationsRun` | `config.getOrThrow<string>('NODE_ENV') === 'development'` | Auto-executa apenas em desenvolvimento |
 | `synchronize` | `false` | Sempre desabilitado |
 
 ---
