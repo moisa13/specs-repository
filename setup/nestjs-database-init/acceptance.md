@@ -9,7 +9,7 @@
 **AC-01 — Aplicação conecta ao banco com variáveis válidas**
 - **Dado** que todas as variáveis de banco estão definidas corretamente no `.env` e o PostgreSQL está acessível
 - **Quando** `pnpm start:dev` é executado
-- **Então** a aplicação sobe sem erros e responde normalmente a requisições
+- **Então** a aplicação sobe sem erros e o log confirma a conexão com o banco
 
 **AC-02 — Migrations executadas automaticamente em desenvolvimento**
 - **Dado** que `NODE_ENV=development` e há migrations pendentes

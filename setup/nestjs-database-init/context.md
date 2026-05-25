@@ -36,7 +36,7 @@
 
 **Fora do escopo:**
 - Entidades e repositórios → responsabilidade de cada spec de feature
-- Health check de banco → ver `setup/nestjs-health`
+- Health check de banco → ver `observability/nestjs-health`
 - Seeding de dados → não coberto por esta spec
 - Multi-tenancy ou múltiplas conexões → não coberto por esta spec
 - Configuração de testes com banco → ver `setup/testing` (a criar)

@@ -148,4 +148,4 @@ O readiness probe poderia ser configurado apenas com verificação de memória, 
 
 ### Consequências
 - Projetos sem banco de dados não podem usar esta spec sem modificação
-- Caso surja a necessidade, uma variante `setup/nestjs-health-minimal` pode ser criada cobrindo apenas liveness e memória, sem dependência de banco
+- Caso surja a necessidade, uma variante `observability/nestjs-health-minimal` pode ser criada cobrindo apenas liveness e memória, sem dependência de banco

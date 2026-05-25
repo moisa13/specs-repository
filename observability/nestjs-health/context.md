@@ -45,4 +45,4 @@
 
 - **Desenvolvimento:** ambos os endpoints funcionam normalmente; limites de memória podem ser ajustados via `.env` para refletir a realidade local.
 - **Produção:** `/health/live` é usado pelo Kubernetes como liveness probe; `/health/ready` como readiness probe. Limites de memória devem refletir os recursos alocados ao container.
-- **Test:** os critérios mínimos de cobertura desta spec estão em `acceptance.md` — a infraestrutura de testes (configuração do Jest, helpers e setup de banco para e2e) é definida em `setup/testing` (a criar).
+- **Test:** endpoints não são testados por esta spec — cobertura de testes definida pela spec `setup/testing` (a criar).
