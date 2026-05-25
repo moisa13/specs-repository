@@ -21,18 +21,18 @@ import { ConfigService } from '@nestjs/config';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         type: 'postgres',
-        host: config.get<string>('DB_HOST'),
-        port: config.get<number>('DB_PORT'),
-        username: config.get<string>('DB_USER'),
-        password: config.get<string>('DB_PASSWORD'),
-        database: config.get<string>('DB_NAME'),
+        host: config.getOrThrow<string>('DB_HOST'),
+        port: config.getOrThrow<number>('DB_PORT'),
+        username: config.getOrThrow<string>('DB_USER'),
+        password: config.getOrThrow<string>('DB_PASSWORD'),
+        database: config.getOrThrow<string>('DB_NAME'),
         ssl:
-          config.get<string>('DB_SSL') === 'true'
+          config.getOrThrow<string>('DB_SSL') === 'true'
             ? { rejectUnauthorized: false }
             : false,
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         migrations: [__dirname + '/migrations/*{.ts,.js}'],
-        migrationsRun: config.get<string>('NODE_ENV') === 'development',
+        migrationsRun: config.getOrThrow<string>('NODE_ENV') === 'development',
         synchronize: false,
       }),
     }),
