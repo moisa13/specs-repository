@@ -56,6 +56,8 @@ As opções abaixo devem estar presentes além das geradas pelo NestJS CLI:
 | Opção | Valor | Motivo |
 |-------|-------|--------|
 | `resolveJsonModule` | `true` | Permite importar `package.json` para ler a versão da API no Swagger |
+| `rootDir` | `"src"` | Garante que o build gere `dist/main.js` e não `dist/src/main.js` — o script `start:prod` gerado pelo CLI depende desse caminho |
+| `outDir` | `"dist"` | Diretório de saída do build; deve bater com o script `start:prod` do `package.json` |
 
 A opção `baseUrl` gerada pelo NestJS CLI deve ser **removida** — está depreciada no TypeScript 6.0+ com `moduleResolution: nodenext` e não é necessária enquanto não houver path aliases (`paths`) configurados.
 
