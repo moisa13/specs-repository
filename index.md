@@ -26,7 +26,7 @@ Consulte [`_meta/prompt-recipes.md`](./_meta/prompt-recipes.md) para templates d
 | Módulo | Descrição | Versão | Status |
 |--------|-----------|--------|--------|
 | [`setup/nestjs-init`](./setup/nestjs-init/README.md) | Estrutura base e configuração global de um projeto NestJS para APIs | 0.1.0 | ✅ pronto |
-| [`setup/nestjs-database-init`](./setup/nestjs-database-init/README.md) | Conexão com PostgreSQL via TypeORM e configuração de migrations em projetos NestJS | 0.1.0 | ✅ pronto |
+| [`setup/nestjs-database-init`](./setup/nestjs-database-init/README.md) | Conexão com PostgreSQL via TypeORM e configuração de migrations em projetos NestJS | 0.1.1 | ✅ pronto |
 | [`observability/nestjs-health`](./observability/nestjs-health/README.md) | Endpoints de liveness e readiness via `@nestjs/terminus` com verificação de banco e memória | 0.1.0 | ✅ pronto |
 
 ---

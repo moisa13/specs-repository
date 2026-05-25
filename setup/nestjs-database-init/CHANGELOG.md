@@ -8,6 +8,14 @@
 
 ---
 
+## [0.1.1] — 2026-05
+
+### Corrigido
+- `contracts.md`, `decisions.md`, `examples/configurar-database-module.md`: `config.get<T>()` substituído por `config.getOrThrow<T>()` em todas as referências ao `ConfigService` — alinha ao padrão do repositório e elimina o tipo `T | undefined` que causaria erro de compilação em strict mode
+- `README.md`, `behavior.md`, `context.md`, `integration.md`: removido marcador `(a criar)` das referências a `observability/nestjs-health`, que agora está publicada
+
+---
+
 ## [0.1.0] — 2026-05
 
 ### Adicionado
