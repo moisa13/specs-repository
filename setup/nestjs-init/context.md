@@ -31,7 +31,7 @@
 - Configuração do `ConfigModule` com validação de variáveis de ambiente via Joi
 - `ValidationPipe` global com `whitelist` e `forbidNonWhitelisted`
 - Filtro de exceção global que normaliza todas as respostas de erro
-- Swagger habilitado apenas em `NODE_ENV=development`
+- Swagger habilitado quando `NODE_ENV !== 'production'` (disponível em `development` e `test`)
 - Configuração de CORS via variável de ambiente
 
 **Fora do escopo:**
@@ -54,4 +54,4 @@ Swagger pode ser omitido. CORS restrito ou desabilitado dependendo do contexto d
 
 - **Desenvolvimento:** Swagger sempre habilitado em `/docs`. Variáveis carregadas de `.env`.
 - **Produção:** Swagger não montado. Variáveis obrigatórias validadas na inicialização — a aplicação deve recusar subir se alguma estiver ausente ou com formato inválido.
-- **Test:** `NODE_ENV=test` desabilita comportamentos dependentes de ambiente (ex: Swagger). Variáveis de teste carregadas de `.env.test`.
+- **Test:** Swagger disponível (mesma regra que desenvolvimento). Variáveis de ambiente devem ser providas pelo runner de testes — o `ConfigModule` não carrega `.env.test` automaticamente; isso é responsabilidade da configuração de testes (ver `setup/testing`).

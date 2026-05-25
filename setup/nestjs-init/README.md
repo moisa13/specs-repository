@@ -13,7 +13,7 @@
 
 ## O que é
 
-Descreve o conjunto mínimo de instalações, estrutura de diretórios e configurações globais que todo projeto NestJS para APIs deve ter antes de qualquer feature ser implementada. Cobre instalação via pnpm, organização de pastas, `ConfigModule` com validação de variáveis de ambiente via Joi, `ValidationPipe` global, filtro de exceção global e Swagger habilitado apenas em desenvolvimento.
+Descreve o conjunto mínimo de instalações, estrutura de diretórios e configurações globais que todo projeto NestJS para APIs deve ter antes de qualquer feature ser implementada. Cobre instalação via pnpm, organização de pastas, `ConfigModule` com validação de variáveis de ambiente via Joi, `ValidationPipe` global, filtro de exceção global e Swagger habilitado quando `NODE_ENV !== 'production'`.
 
 ## Quando usar
 
