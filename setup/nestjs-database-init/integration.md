@@ -15,7 +15,7 @@
 | Módulo | Como usa este módulo |
 |--------|----------------------|
 | Qualquer módulo de feature | Usa `TypeOrmModule.forFeature([Entidade])` para registrar suas entidades; a conexão global configurada aqui é usada automaticamente |
-| `observability/nestjs-health` | Registra o `TypeOrmHealthIndicator` usando a conexão configurada aqui — não requer alteração no `DatabaseModule` |
+| `setup/nestjs-health` | Registra o `TypeOrmHealthIndicator` usando a conexão configurada aqui — não requer alteração no `DatabaseModule` |
 | `auth/` (a criar) | Seus módulos de domínio (usuários, sessões) registram entidades via `TypeOrmModule.forFeature` |
 
 ---

@@ -154,7 +154,7 @@ O Terminus retorna um envelope padrão em ambos os endpoints. Os campos `info` e
 Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
 
 ```markdown
-## Health check (observability/nestjs-health)
+## Health check (setup/nestjs-health)
 
 - `/health/live` nunca verifica dependências externas — apenas confirma que o processo está respondendo; sempre retorna 200
 - `/health/ready` verifica banco de dados e memória (heap e RSS); retorna 200 quando todos os indicadores estão saudáveis e 503 quando qualquer um falha; novos indicadores de dependências externas entram aqui
