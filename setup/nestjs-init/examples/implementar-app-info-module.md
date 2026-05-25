@@ -5,8 +5,8 @@
 Módulo de infraestrutura responsável pela rota `GET /`. Retorna metadados da aplicação em tempo real: nome, versão, descrição, timestamp e uptime. Registrado no `AppModule` ao lado do `ConfigModule`.
 
 Caminhos dos arquivos:
-- `src/app-info/app-info.module.ts`
-- `src/app-info/app-info.controller.ts`
+- `src/modules/app-info/app-info.module.ts`
+- `src/modules/app-info/app-info.controller.ts`
 
 ---
 
@@ -35,7 +35,7 @@ import {
   ApiProperty,
   ApiTags,
 } from '@nestjs/swagger';
-import packageJson from '../../package.json';
+import packageJson from '../../../package.json';
 
 class AppInfoResponseDto {
   @ApiProperty()
@@ -81,7 +81,7 @@ export class AppInfoController {
 ```typescript
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { AppInfoModule } from './app-info/app-info.module';
+import { AppInfoModule } from './modules/app-info/app-info.module';
 import { envValidationSchema } from './config/env.validation';
 
 @Module({
