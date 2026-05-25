@@ -8,12 +8,18 @@
 
 ---
 
-## [Não lançado]
+## [0.2.0] — 2026-05
+
+### Adicionado
+- `contracts.md`: seção de DTO de resposta (`AppInfoResponseDto`) e decorators Swagger para o endpoint `GET /` — implementações existentes devem converter `interface AppInfoResponse` para `class AppInfoResponseDto` com `@ApiProperty()` em cada campo
+- `examples/implementar-app-info-module.md`: exemplo atualizado com `AppInfoResponseDto` como `class` com `@ApiProperty()` e `@ApiOkResponse({ type: AppInfoResponseDto })` no controller
 
 ### Corrigido
 - `behavior.md`: documenta o comando exato `nest new` com as flags `--skip-git` e `--strict`, e instrui a deletar os arquivos padrão do CLI (`app.controller.ts`, `app.service.ts`, `app.controller.spec.ts`) imediatamente após a criação
 - `contracts.md`: documenta que o `eslint.config.mjs` gerado pelo CLI não inclui `dist/**` no `ignores` e que isso causa falha no lint após o primeiro build
 - `contracts.md`: documenta o conteúdo mínimo do `.gitignore` e explica que o arquivo não é gerado automaticamente quando `--skip-git` é usado
+- `acceptance.md`: adiciona `APP_DESCRIPTION` à lista de variáveis obrigatórias no AC-01
+- `README.md`, `behavior.md`, `context.md`, `integration.md`: substitui referência `setup/database (a criar)` por `setup/nestjs-database-init`
 
 ---
 

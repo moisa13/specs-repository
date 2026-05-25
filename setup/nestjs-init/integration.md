@@ -18,7 +18,7 @@ Todos os módulos de feature adicionados ao projeto dependem da estrutura e dos 
 
 | Módulo | Como usa este módulo |
 |--------|----------------------|
-| `setup/database` (a criar) | Parte da estrutura de diretórios e usa `ConfigService` para ler credenciais do banco |
+| `setup/nestjs-database-init` | Parte da estrutura de diretórios e usa `ConfigService` para ler credenciais do banco |
 | `auth/` (a criar) | Usa `ConfigService` para segredos JWT; depende do `ValidationPipe` e do filtro global |
 | Qualquer módulo de feature | Herda `ConfigService` global, `ValidationPipe` e formato de erro |
 

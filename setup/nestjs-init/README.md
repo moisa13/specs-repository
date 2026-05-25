@@ -4,7 +4,7 @@
 
 ---
 
-**Spec version:** 0.1.0
+**Spec version:** 0.2.0
 **Status:** ✅ pronto
 **Última revisão:** 2026-05
 **Revisado por:** Moiséis Almeida
@@ -23,12 +23,12 @@ Descreve o conjunto mínimo de instalações, estrutura de diretórios e configu
 ## Quando NÃO usar
 
 - Para adicionar features a um projeto já inicializado — use a spec da feature em questão
-- Para configurar banco de dados — ver `setup/database` (a criar)
+- Para configurar banco de dados — ver `setup/nestjs-database-init`
 - Para configurar autenticação — ver `auth/` (a criar)
 
 ## Módulos relacionados
 
-- `setup/database` — configuração de banco de dados (a criar)
+- `setup/nestjs-database-init` — configuração de banco de dados com TypeORM
 - `auth/` — autenticação e autorização (a criar)
 
 ## Arquivos desta spec
