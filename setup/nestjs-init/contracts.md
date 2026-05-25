@@ -71,6 +71,8 @@ O `rootDir: "src"` no `tsconfig.json` exige que a propriedade `include` também 
 
 A opção `baseUrl` gerada pelo NestJS CLI deve ser **removida** — está depreciada no TypeScript 6.0+ com `moduleResolution: nodenext` e não é necessária enquanto não houver path aliases (`paths`) configurados.
 
+A opção `incremental` gerada pelo NestJS CLI deve ser **removida** — o `nest-cli.json` gerado pelo CLI tem `deleteOutDir: true`, que limpa apenas `dist/` a cada build. Os arquivos `.tsbuildinfo` gerados pelo `incremental` ficam na raiz do projeto, sobrevivem ao `deleteOutDir` e fazem o TypeScript concluir que nada mudou, pulando a emissão dos arquivos. O resultado é `nest build` e `npm run start:dev` saindo com código 0 sem gerar `dist/`.
+
 ## Configuração de linting e formatação
 
 O projeto usa ESLint com `typescript-eslint` e Prettier integrado via `eslint-plugin-prettier`. A configuração é gerada pelo NestJS CLI e não deve ser removida.
@@ -80,6 +82,18 @@ O array `ignores` do `eslint.config.mjs` gerado pelo CLI não inclui `dist/**` p
 ```js
 {
   ignores: ['eslint.config.mjs', 'dist/**'],
+},
+```
+
+O `include: ["src/**/*"]` adicionado ao `tsconfig.json` exclui `test/` do TypeScript project service. O ruleset `recommendedTypeChecked` depende do project service para type-checking — sem acesso aos arquivos de `test/`, o ESLint falha ao analisá-los. A propriedade `allowDefaultProject` deve ser adicionada ao bloco `languageOptions.parserOptions` do `eslint.config.mjs`:
+
+```js
+languageOptions: {
+  parserOptions: {
+    projectService: {
+      allowDefaultProject: ['test/*.ts'],
+    },
+  },
 },
 ```
 
