@@ -35,7 +35,7 @@
 - Configuração de CORS via variável de ambiente
 
 **Fora do escopo:**
-- Configuração de banco de dados → ver `setup/database` (a criar)
+- Configuração de banco de dados → ver `setup/nestjs-database-init`
 - Autenticação e autorização → ver `auth/` (a criar)
 - Logging estruturado → ver `observability/logging` (a criar)
 - Testes automatizados → ver `setup/testing` (a criar)

@@ -7,7 +7,7 @@
 ## Fluxo principal
 
 **AC-01 — Aplicação sobe com variáveis válidas**
-- **Dado** que todas as variáveis obrigatórias (`NODE_ENV`, `PORT`, `CORS_ORIGIN`, `APP_NAME`) estão definidas corretamente no `.env`
+- **Dado** que todas as variáveis obrigatórias (`NODE_ENV`, `PORT`, `CORS_ORIGIN`, `APP_NAME`, `APP_DESCRIPTION`) estão definidas corretamente no `.env`
 - **Quando** `pnpm start:dev` é executado
 - **Então** a aplicação sobe sem erros, escuta na porta configurada e o log confirma a inicialização
 

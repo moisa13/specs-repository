@@ -29,14 +29,28 @@ export class AppInfoModule {}
 ```typescript
 import { Controller, Get } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiOkResponse,
+  ApiOperation,
+  ApiProperty,
+  ApiTags,
+} from '@nestjs/swagger';
 import packageJson from '../../package.json';
 
-interface AppInfoResponse {
+class AppInfoResponseDto {
+  @ApiProperty()
   name: string;
+
+  @ApiProperty()
   version: string;
+
+  @ApiProperty()
   description: string;
+
+  @ApiProperty()
   timestamp: string;
+
+  @ApiProperty()
   uptime: number;
 }
 
@@ -47,7 +61,8 @@ export class AppInfoController {
 
   @Get()
   @ApiOperation({ summary: 'Retorna metadados da aplicação' })
-  getInfo(): AppInfoResponse {
+  @ApiOkResponse({ type: AppInfoResponseDto })
+  getInfo(): AppInfoResponseDto {
     return {
       name: this.configService.getOrThrow<string>('APP_NAME'),
       version: packageJson.version,
