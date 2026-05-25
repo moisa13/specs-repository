@@ -11,14 +11,16 @@
 ├── src/
 │   ├── app.module.ts
 │   ├── main.ts
-│   ├── app-info/
-│   │   ├── app-info.module.ts
-│   │   └── app-info.controller.ts
+│   ├── modules/
+│   │   └── app-info/
+│   │       ├── app-info.module.ts
+│   │       └── app-info.controller.ts
 │   ├── common/
 │   │   └── filters/
 │   │       └── all-exceptions.filter.ts
 │   └── config/
 │       └── env.validation.ts
+├── agents.md             ← contexto vivo do projeto para agentes
 ├── .env                  ← não commitado
 ├── .env.example
 ├── .gitignore
@@ -27,6 +29,10 @@
 ├── pnpm-lock.yaml
 └── tsconfig.json
 ```
+
+O arquivo `agents.md` é criado na raiz do projeto junto com a inicialização. Ele registra convenções, decisões e padrões do projeto em linguagem direta para agentes. Cada spec aplicada ao projeto acrescenta sua própria seção. Ver conteúdo inicial em `examples/gerar-agents-md.md`.
+
+Todos os módulos da aplicação — sejam de infraestrutura (ex: `app-info`, `health`) ou de domínio (ex: `users`, `orders`) — residem em `src/modules/`. Os diretórios `src/common/`, `src/config/` e `src/database/` são transversais e ficam fora de `src/modules/`.
 
 ## Conteúdo mínimo do .gitignore
 
@@ -136,11 +142,11 @@ A aplicação expõe uma rota `GET /` que retorna informações básicas sobre s
 
 ## Estrutura de diretórios — crescimento com features
 
-Ao adicionar a primeira feature, a estrutura cresce com:
+Ao adicionar a primeira feature, a estrutura cresce dentro de `src/modules/`:
 
 ```
 src/
-└── <domínio>/
+└── modules/
     └── <módulo>/
         ├── <módulo>.module.ts
         ├── <módulo>.controller.ts
