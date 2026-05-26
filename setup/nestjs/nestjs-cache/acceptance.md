@@ -46,7 +46,12 @@
 - **Quando** a chave é construída
 - **Então** a chave contém `products:list:{hash}` onde `{hash}` é determinístico para os mesmos parâmetros
 
-**AC-08 — invalidateAll remove todas as chaves do recurso e emite evento**
+**AC-08 — invalidateById remove chave exata e emite evento**
+- **Dado** que a chave `users:42` existe no Redis
+- **Quando** `invalidateById('users', 42)` é chamado
+- **Então** a chave `users:42` é removida e um evento é publicado em `cache-events:users`
+
+**AC-09 — invalidateAll remove todas as chaves do recurso e emite evento**
 - **Dado** que existem múltiplas chaves `users:*` no Redis
 - **Quando** `invalidateAll('users')` é chamado
 - **Então** todas as chaves `users:*` são removidas e um evento é publicado em `cache-events:users`
@@ -55,12 +60,12 @@
 
 ## CacheWarmingService
 
-**AC-09 — Warmers executam no onApplicationBootstrap**
+**AC-10 — Warmers executam no onApplicationBootstrap**
 - **Dado** que dois warmers estão registrados via `CACHE_WARMERS`
 - **Quando** a aplicação inicializa
 - **Então** ambos os warmers são executados em sequência no `onApplicationBootstrap`
 
-**AC-10 — Falha em um warmer não impede os demais**
+**AC-11 — Falha em um warmer não impede os demais**
 - **Dado** que o primeiro warmer lança exceção
 - **Quando** o `CacheWarmingService` itera os warmers
 - **Então** o erro é logado; o segundo warmer é executado normalmente; a aplicação sobe
@@ -69,12 +74,12 @@
 
 ## CacheEventsService
 
-**AC-11 — Eventos do mesmo recurso na janela de debounce são mergeados**
+**AC-12 — Eventos do mesmo recurso na janela de debounce são mergeados**
 - **Dado** que três eventos de invalidação do recurso `users` chegam em 50ms
 - **Quando** o debounce de 100ms expira
 - **Então** um único payload é publicado em `cache-events:users` com as chaves das três invalidações
 
-**AC-12 — Falha na publicação do evento não propaga exceção**
+**AC-13 — Falha na publicação do evento não propaga exceção**
 - **Dado** que o Redis Pub/Sub está indisponível
 - **Quando** `CacheEventsService` tenta publicar
 - **Então** o erro é logado e nenhuma exceção é propagada ao caller
@@ -83,7 +88,7 @@
 
 ## CacheModule
 
-**AC-13 — CacheService injetável em módulos de domínio sem importar CacheModule**
+**AC-14 — CacheService injetável em módulos de domínio sem importar CacheModule**
 - **Dado** que `CacheModule` está importado no `AppModule` e decorado com `@Global()`
 - **Quando** um módulo de domínio injeta `CacheService` sem declarar `CacheModule` em seus imports
 - **Então** a injeção é resolvida corretamente pelo container NestJS
@@ -97,7 +102,7 @@
 - `fn()` executada mais de uma vez por miss concorrente (falta double-checked locking)
 - `CACHE_ENABLED=false` ainda interagindo com o Redis
 - `CacheModule` sem `@Global()` — módulos de domínio falham na resolução de `CacheService`
-- Banco Redis de cache compartilhado com filas (`REDIS_QUEUE_DB`)
+- Banco Redis de cache compartilhado com filas (`REDIS_DB` em `nestjs-queue`)
 
 ---
 

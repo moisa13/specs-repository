@@ -64,9 +64,10 @@ Cada warmer é responsável por chamar `CacheService.set` ou `GenericCacheServic
 ### CacheEventsService
 
 Serviço `@Injectable()` responsável por publicar eventos de invalidação no Redis Pub/Sub. Deve:
-- Receber eventos de invalidação de `CacheService`
+- Receber de `CacheService` o recurso e as chaves invalidadas
 - Aplicar debounce de 100ms: eventos do mesmo recurso na mesma janela são mergeados em um único payload
-- Publicar no canal `cache-events:{resource}` com o payload definido em `caching/cache/contracts.md`
+- Compor o payload final adicionando o `timestamp` (ISO 8601) ao momento da publicação — `CacheService` passa apenas `resource` e `keys`; `CacheEventsService` é responsável pelo campo `timestamp`
+- Publicar no canal `cache-events:{resource}` com o payload `{ resource, keys, timestamp }` conforme `caching/cache/contracts.md`
 - Falha na publicação é logada e não propaga exceção
 
 ---

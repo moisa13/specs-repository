@@ -26,6 +26,8 @@ remember(chave, ttl, fn)
 
 O double-checked locking evita que múltiplas instâncias executem `fn()` simultaneamente para a mesma chave após um miss concorrente — apenas uma instância grava; as demais aguardam e leem o resultado. Se o produtor cair antes de gravar (lock expirou sem gravação), as instâncias que aguardavam executam `fn()` diretamente como fallback.
 
+O lock deve ter um TTL suficientemente curto para expirar automaticamente se o produtor cair (evita deadlock), mas suficientemente longo para comportar a execução de `fn()` no pior caso. O valor concreto é definido pela implementação e configurável — ver a spec técnica correspondente.
+
 > Se `CACHE_ENABLED=false`, o `remember` executa `fn()` diretamente e retorna sem gravar ou ler do cache.
 
 ---
@@ -78,11 +80,11 @@ As chaves seguem namespacing hierárquico separado por `:`:
 
 A invalidação ocorre em dois níveis:
 
-**Por chave exata** — remove uma entrada específica.
+**Por chave exata** (`delete`) — remove uma entrada específica. Após a remoção, publica um evento no canal do recurso. O recurso é derivado como o primeiro segmento da chave antes do primeiro `:` — por exemplo, `users:42` → recurso `users`.
 
-**Por padrão** — remove todas as chaves que correspondem a um padrão (ex: todas as entradas de um recurso). A varredura é feita de forma incremental para não bloquear o Redis.
+**Por padrão** (`deletePattern`) — remove todas as chaves que correspondem a um padrão. A varredura é feita de forma incremental para não bloquear o Redis. Após a remoção, publica um evento no canal do recurso derivado do padrão — por exemplo, `users:42:*` → recurso `users`. Nenhum evento é publicado se o padrão não corresponder a nenhuma chave.
 
-Após a remoção das chaves, o sistema publica um evento de invalidação no canal de Pub/Sub do recurso. O **recurso** é derivado do padrão como o primeiro segmento antes do primeiro `:` — por exemplo, `users:42:*` → recurso `users`; `products:list:*` → recurso `products`. Isso garante que toda invalidação relativa a um mesmo tipo de dado chegue ao mesmo canal, independentemente da granularidade do padrão usado.
+Em ambos os casos, o **recurso** é o primeiro segmento antes do primeiro `:`, garantindo que toda invalidação de um mesmo tipo de dado chegue ao mesmo canal.
 
 > A publicação do evento é melhor-esforço: a invalidação das chaves é a operação principal. Falha na publicação não deve impedir nem desfazer a remoção das chaves.
 

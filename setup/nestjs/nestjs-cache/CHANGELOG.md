@@ -11,6 +11,8 @@
 ## [Não lançado]
 
 ### Adicionado
+- AC-08 (`invalidateById` + evento) e renumeração de AC-09 a AC-14
+- Clarificação em `behavior.md`: `CacheEventsService` é responsável por adicionar o campo `timestamp` ao payload
 - AC-04 atualizado para incluir `deletePattern` no cenário `CACHE_ENABLED=false`
 
 ### Alterado

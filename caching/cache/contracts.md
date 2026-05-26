@@ -20,7 +20,7 @@ TTLs por recurso são definidos pela implementação e configurados via variáve
 |----------|---------|-------|-----------|
 | `get(key)` | `key: string` — chave sem prefixo | `Promise<T \| null>` — valor desserializado ou `null` | Retorna `null` em miss; nunca lança exceção ao caller; retorna `null` se Redis indisponível |
 | `set(key, value, ttl)` | `key: string`; `value: unknown`; `ttl: number` (segundos, antes do multiplicador) | `Promise<void>` | TTL efetivo = arredondar(ttl × multiplicador); no-op quando `CACHE_ENABLED=false` |
-| `delete(key)` | `key: string` — chave sem prefixo | `Promise<void>` | Remove chave exata; no-op quando `CACHE_ENABLED=false` ou chave inexistente |
+| `delete(key)` | `key: string` — chave sem prefixo | `Promise<void>` | Remove chave exata e publica evento em `cache-events:{recurso}`; no-op quando `CACHE_ENABLED=false` ou chave inexistente |
 
 ---
 
@@ -60,6 +60,7 @@ TTLs por recurso são definidos pela implementação e configurados via variáve
 - Todas as chaves correspondentes são removidas antes que a operação retorne
 - O recurso para o evento de invalidação é derivado como o **primeiro segmento do padrão antes do primeiro `:`** — ex: `users:42:*` → `users`; `products:list:*` → `products`
 - No-op quando `CACHE_ENABLED=false` — nenhuma chave é varrida ou removida; nenhum evento é publicado
+- Nenhum evento é publicado quando o padrão não corresponde a nenhuma chave
 
 ---
 

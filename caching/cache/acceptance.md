@@ -72,17 +72,22 @@
 
 ## Invalidação
 
-**AC-11 — deletePattern remove todas as chaves correspondentes sem bloquear**
+**AC-11 — delete remove chave exata e publica evento**
+- **Dado** que a chave `users:42` existe no Redis
+- **Quando** `delete('users:42')` é chamado
+- **Então** a chave é removida e um evento é publicado no canal `cache-events:users` (primeiro segmento de `users:42`)
+
+**AC-12 — deletePattern remove todas as chaves correspondentes sem bloquear**
 - **Dado** que existem 10.000 chaves com padrão `users:*` no Redis
 - **Quando** `deletePattern('users:*')` é chamado
 - **Então** todas as 10.000 chaves são removidas via varredura incremental; o Redis permanece responsivo
 
-**AC-12 — Evento de invalidação publicado após remoção com recurso derivado do padrão**
+**AC-13 — Evento de invalidação publicado após remoção com recurso derivado do padrão**
 - **Dado** que `deletePattern('users:42:*')` remove chaves com sucesso
 - **Quando** a remoção é concluída
 - **Então** um evento é publicado no canal `cache-events:users` (primeiro segmento de `users:42:*`) com as chaves removidas e timestamp
 
-**AC-13 — Falha na publicação do evento não desfaz a invalidação**
+**AC-14 — Falha na publicação do evento não desfaz a invalidação**
 - **Dado** que as chaves foram removidas e a publicação do evento falha
 - **Quando** o erro de Pub/Sub ocorre
 - **Então** as chaves permanecem removidas; o erro é logado; nenhuma exceção é propagada ao caller
@@ -91,7 +96,7 @@
 
 ## Redis indisponível
 
-**AC-14 — Redis indisponível não propaga erro ao caller via remember**
+**AC-15 — Redis indisponível não propaga erro ao caller via remember**
 - **Dado** que o Redis está indisponível
 - **Quando** `remember('users:42', 300, fn)` é chamado
 - **Então** executa `fn()` e retorna o resultado como fallback; nenhuma exceção é propagada ao caller
@@ -100,7 +105,7 @@
 
 ## Aquecimento de cache
 
-**AC-15 — Falha no warming de um recurso não impede a inicialização**
+**AC-16 — Falha no warming de um recurso não impede a inicialização**
 - **Dado** que o aquecimento de um recurso falha com erro
 - **Quando** a aplicação inicia
 - **Então** o erro é logado; os demais recursos continuam sendo aquecidos; a aplicação sobe normalmente

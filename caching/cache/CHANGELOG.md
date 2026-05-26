@@ -11,6 +11,10 @@
 ## [Não lançado]
 
 ### Adicionado
+- Comportamento de publicação de evento para `delete` (além de `deletePattern`) em `behavior.md` e `contracts.md`
+- Regra: nenhum evento publicado quando `deletePattern` não corresponde a nenhuma chave
+- Guidance sobre TTL do lock distribuído em `behavior.md`
+- AC-11 (`delete` + evento) e renumeração dos ACs subsequentes (AC-12 a AC-16)
 - Contratos formais de entrada/saída para `get`, `set` e `delete` em `contracts.md`
 - Regra explícita de derivação do `resource` a partir do padrão em `deletePattern` (primeiro segmento antes do primeiro `:`)
 - Formato de chave de lock como contrato: `{prefixo}:lock:{chave}` — segmento `lock` reservado
