@@ -5,7 +5,7 @@
 ---
 
 **Spec version:** 0.1.0
-**Status:** 📝 rascunho
+**Status:** ✅ pronto
 **Última revisão:** 2026-05
 **Revisado por:** Moiséis Almeida
 
