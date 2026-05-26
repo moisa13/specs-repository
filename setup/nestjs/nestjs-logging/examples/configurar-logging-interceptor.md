@@ -6,7 +6,7 @@ O interceptor registra método HTTP, URL, status de resposta e duração de cada
 
 ---
 
-## src/logger/logging.interceptor.ts
+## src/infrastructure/logger/logging.interceptor.ts
 
 ```typescript
 import { CallHandler, ExecutionContext, Injectable, Logger, NestInterceptor } from '@nestjs/common';

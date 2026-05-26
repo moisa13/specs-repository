@@ -6,7 +6,7 @@ Configuração inicial do `QueueModule` com duas filas registradas: `notificatio
 
 ---
 
-## `src/queue/queue.constants.ts`
+## `src/infrastructure/queue/queue.constants.ts`
 
 ```typescript
 export const QUEUE_NAMES = {
@@ -19,7 +19,7 @@ export type QueueName = (typeof QUEUE_NAMES)[keyof typeof QUEUE_NAMES];
 
 ---
 
-## `src/queue/queue.module.ts`
+## `src/infrastructure/queue/queue.module.ts`
 
 ```typescript
 import { BullModule } from '@nestjs/bullmq';

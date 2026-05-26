@@ -8,6 +8,13 @@
 
 ---
 
+## [0.3.1] — 2026-05
+
+### Corrigido
+- `behavior.md`, `contracts.md`, `examples/gerar-agents-md.md`: referência `src/database/` atualizada para `src/infrastructure/` — módulos de infraestrutura (database, logger, queue, cache) passaram a residir em `src/infrastructure/`
+
+---
+
 ## [0.3.0] — 2026-05
 
 ### Adicionado

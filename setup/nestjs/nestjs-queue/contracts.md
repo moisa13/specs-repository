@@ -158,8 +158,8 @@ Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
 ```markdown
 ## Filas assíncronas (setup/nestjs/nestjs-queue)
 
-- Toda fila nova deve ser registrada em `src/queue/queue.module.ts` via `BullModule.registerQueue` e seu nome adicionado ao objeto `QUEUE_NAMES` em `src/queue/queue.constants.ts`; adicionar também em `BullBoardModule.forFeature` no mesmo arquivo
-- `BullModule.registerQueue` deve ser chamado em `src/queue/queue.module.ts` (registro canônico) e também no módulo de feature que declara o Processor (requisito do `@nestjs/bullmq`)
+- Toda fila nova deve ser registrada em `src/infrastructure/queue/queue.module.ts` via `BullModule.registerQueue` e seu nome adicionado ao objeto `QUEUE_NAMES` em `src/infrastructure/queue/queue.constants.ts`; adicionar também em `BullBoardModule.forFeature` no mesmo arquivo
+- `BullModule.registerQueue` deve ser chamado em `src/infrastructure/queue/queue.module.ts` (registro canônico) e também no módulo de feature que declara o Processor (requisito do `@nestjs/bullmq`)
 - Nunca injetar `Queue` diretamente nos services — usar apenas `QueueService` para produção de jobs
 - Processors ficam em `src/[feature]/processors/[job-type].processor.ts` e são declarados no módulo da feature
 - Cada fila deve ter exatamente um Processor registrado na aplicação

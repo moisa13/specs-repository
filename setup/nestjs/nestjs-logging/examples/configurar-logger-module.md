@@ -6,7 +6,7 @@
 
 ---
 
-## src/logger/logger.module.ts
+## src/infrastructure/logger/logger.module.ts
 
 ```typescript
 import { Global, Module } from '@nestjs/common';

@@ -4,7 +4,7 @@
 
 Arquivo usado exclusivamente pelo TypeORM CLI para gerar e executar migrations fora do contexto NestJS. Não é importado pela aplicação.
 
-Caminho do arquivo: `src/database/data-source.ts`
+Caminho do arquivo: `src/infrastructure/database/data-source.ts`
 
 ---
 
@@ -26,7 +26,7 @@ export default new DataSource({
   ssl:
     process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
   entities: ['src/**/*.entity.ts'],
-  migrations: ['src/database/migrations/*.ts'],
+  migrations: ['src/infrastructure/database/migrations/*.ts'],
   synchronize: false,
 });
 ```

@@ -21,6 +21,13 @@
 
 ---
 
+## [0.1.1] — 2026-05
+
+### Corrigido
+- `contracts.md`, `examples/`: caminhos `src/logger/` atualizados para `src/infrastructure/logger/` — reflete a reestruturação do diretório de infraestrutura no projeto
+
+---
+
 ## [0.1.0] — 2026-05
 
 ### Adicionado

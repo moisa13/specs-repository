@@ -12,10 +12,10 @@ Garantir que todo projeto NestJS tenha uma configuração de banco de dados cons
 
 1. Os pacotes `@nestjs/typeorm`, `typeorm` e `pg` são instalados via pnpm
 2. As variáveis de ambiente de banco são adicionadas ao schema Joi em `src/config/env.validation.ts` e ao `.env.example`
-3. O `DatabaseModule` é criado em `src/database/database.module.ts` com `TypeOrmModule.forRootAsync` lendo as configurações do `ConfigService`
+3. O `DatabaseModule` é criado em `src/infrastructure/database/database.module.ts` com `TypeOrmModule.forRootAsync` lendo as configurações do `ConfigService`
 4. O `DatabaseModule` é registrado no `AppModule` como módulo de infraestrutura, após o `ConfigModule`
-5. O arquivo `src/database/data-source.ts` é criado para uso exclusivo do TypeORM CLI
-6. O diretório `src/database/migrations/` é criado
+5. O arquivo `src/infrastructure/database/data-source.ts` é criado para uso exclusivo do TypeORM CLI
+6. O diretório `src/infrastructure/database/migrations/` é criado
 7. Os scripts de migration são adicionados ao `package.json`
 8. A aplicação sobe e, em desenvolvimento, executa automaticamente as migrations pendentes antes de aceitar requisições
 
@@ -29,7 +29,7 @@ Garantir que todo projeto NestJS tenha uma configuração de banco de dados cons
 - O `DatabaseModule` deve ser registrado no `AppModule` como módulo de infraestrutura, após o `ConfigModule`
 - O arquivo `data-source.ts` lê variáveis de ambiente diretamente via `process.env` — é usado apenas pelo TypeORM CLI, fora do contexto NestJS
 - O glob de entidades no `DatabaseModule` é `*{.ts,.js}` relativo ao `__dirname` — encontra `.ts` com ts-node (desenvolvimento) e `.js` no código compilado (produção); o `data-source.ts` usa o glob estático `src/**/*.entity.ts`, pois o CLI opera sempre no código-fonte TypeScript
-- O diretório de migrations no `TypeOrmModule` usa o glob `*{.ts,.js}` relativo ao `__dirname` — em desenvolvimento (ts-node) resolve para `src/database/migrations/*.ts`; em produção (código compilado) resolve para `dist/database/migrations/*.js`; o `data-source.ts` aponta diretamente para os fontes TypeScript (`src/database/migrations/*.ts`)
+- O diretório de migrations no `TypeOrmModule` usa o glob `*{.ts,.js}` relativo ao `__dirname` — em desenvolvimento (ts-node) resolve para `src/infrastructure/database/migrations/*.ts`; em produção (código compilado) resolve para `dist/infrastructure/database/migrations/*.js`; o `data-source.ts` aponta diretamente para os fontes TypeScript (`src/infrastructure/database/migrations/*.ts`)
 - Migrations devem ser geradas via CLI (`pnpm migration:generate`) — escrita manual é permitida apenas para operações que o CLI não consegue inferir (ex: transformação de dados), e deve ser registrada em `decisions.md`
 - A tabela de controle de migrations gerenciada pelo TypeORM (`migrations`) nunca deve ser alterada ou deletada manualmente
 
