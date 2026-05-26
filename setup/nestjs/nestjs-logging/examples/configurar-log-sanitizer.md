@@ -6,7 +6,7 @@
 
 ---
 
-## src/logger/log-sanitizer.ts
+## src/infrastructure/logger/log-sanitizer.ts
 
 ```typescript
 import { Injectable } from '@nestjs/common';

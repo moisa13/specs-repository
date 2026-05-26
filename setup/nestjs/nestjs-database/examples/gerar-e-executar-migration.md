@@ -11,12 +11,12 @@ Fluxo completo de criação e execução de uma migration após adicionar ou mod
 ### 1. Gerar a migration (após criar ou modificar uma entidade)
 
 ```bash
-pnpm migration:generate src/database/migrations/CreateUsersTable
+pnpm migration:generate src/infrastructure/database/migrations/CreateUsersTable
 ```
 
 O TypeORM compara o estado atual das entidades com o schema do banco e gera um arquivo com os comandos SQL necessários.
 
-Arquivo gerado: `src/database/migrations/1716234567890-CreateUsersTable.ts`
+Arquivo gerado: `src/infrastructure/database/migrations/1716234567890-CreateUsersTable.ts`
 
 ### 2. Revisar o arquivo gerado
 
@@ -45,12 +45,12 @@ pnpm migration:revert
 Use `migration:create` quando a operação não pode ser inferida pelo CLI a partir das entidades (ex: transformação de dados, seeding pontual).
 
 ```bash
-pnpm migration:create src/database/migrations/SeedInitialRoles
+pnpm migration:create src/infrastructure/database/migrations/SeedInitialRoles
 ```
 
 O TypeORM cria um arquivo vazio com os métodos `up()` e `down()` para preenchimento manual.
 
-Arquivo gerado: `src/database/migrations/1716234567890-SeedInitialRoles.ts`
+Arquivo gerado: `src/infrastructure/database/migrations/1716234567890-SeedInitialRoles.ts`
 
 A escrita manual deve ser registrada em `decisions.md` conforme descrito em `behavior.md`.
 

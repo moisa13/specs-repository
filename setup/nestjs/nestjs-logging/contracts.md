@@ -36,10 +36,10 @@ LOG_DIR: Joi.string().default('logs/'),
 
 | Artefato | Nome da classe | Localização |
 |----------|---------------|-------------|
-| Módulo | `LoggerModule` | `src/logger/logger.module.ts` |
-| Logger service | `LoggerService` | `src/logger/logger.service.ts` |
-| Sanitizer | `LogSanitizer` | `src/logger/log-sanitizer.ts` |
-| Interceptor | `LoggingInterceptor` | `src/logger/logging.interceptor.ts` |
+| Módulo | `LoggerModule` | `src/infrastructure/logger/logger.module.ts` |
+| Logger service | `LoggerService` | `src/infrastructure/logger/logger.service.ts` |
+| Sanitizer | `LogSanitizer` | `src/infrastructure/logger/log-sanitizer.ts` |
+| Interceptor | `LoggingInterceptor` | `src/infrastructure/logger/logging.interceptor.ts` |
 
 ---
 
@@ -50,7 +50,7 @@ Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
 ```markdown
 ## Logging (setup/nestjs/nestjs-logging)
 
-- O logger central é `LoggerService` em `src/logger/logger.service.ts`; nunca instanciar Winston diretamente fora dele
+- O logger central é `LoggerService` em `src/infrastructure/logger/logger.service.ts`; nunca instanciar Winston diretamente fora dele
 - Para logar em qualquer classe: `private readonly logger = new Logger(NomeDaClasse.name)` — NestJS delega automaticamente para `LoggerService`
 - Nunca logar dados de entrada sem antes passar pelo `LogSanitizer.sanitize()`
 ```

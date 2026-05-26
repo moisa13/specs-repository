@@ -11,7 +11,7 @@ O módulo `notifications` precisa processar jobs do tipo `send-email` da fila `n
 ```typescript
 import { Processor, WorkerHost } from '@nestjs/bullmq';
 import { Job } from 'bullmq';
-import { QUEUE_NAMES } from '../../queue/queue.constants';
+import { QUEUE_NAMES } from '../../infrastructure/queue/queue.constants';
 import { EmailService } from '../email.service';
 
 @Processor(QUEUE_NAMES.NOTIFICATIONS, { concurrency: 1 })
@@ -39,8 +39,8 @@ export class SendEmailProcessor extends WorkerHost {
 ```typescript
 import { BullModule } from '@nestjs/bullmq';
 import { Module } from '@nestjs/common';
-import { QUEUE_NAMES } from '../queue/queue.constants';
-import { QueueModule } from '../queue/queue.module';
+import { QUEUE_NAMES } from '../infrastructure/queue/queue.constants';
+import { QueueModule } from '../infrastructure/queue/queue.module';
 import { SendEmailProcessor } from './processors/send-email.processor';
 import { EmailService } from './email.service';
 
@@ -60,8 +60,8 @@ export class NotificationsModule {}
 
 ```typescript
 import { Injectable } from '@nestjs/common';
-import { QueueService } from '../queue/queue.service';
-import { QUEUE_NAMES } from '../queue/queue.constants';
+import { QueueService } from '../infrastructure/queue/queue.service';
+import { QUEUE_NAMES } from '../infrastructure/queue/queue.constants';
 
 @Injectable()
 export class UserService {

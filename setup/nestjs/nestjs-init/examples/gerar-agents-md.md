@@ -20,7 +20,7 @@ Contexto para agentes que trabalham neste projeto. Cada seção foi adicionada p
 ## Estrutura do projeto (setup/nestjs/nestjs-init)
 
 - Todos os módulos da aplicação — de infraestrutura ou de domínio — vivem em `src/modules/`
-- Diretórios transversais ficam fora de `src/modules/`: `src/common/`, `src/config/`, `src/database/`
+- Diretórios transversais ficam fora de `src/modules/`: `src/common/`, `src/config/`, `src/infrastructure/`
 - O `AppModule` não define controllers, providers ou services diretamente — apenas importa módulos
 
 ## Convenções de código (setup/nestjs/nestjs-init)

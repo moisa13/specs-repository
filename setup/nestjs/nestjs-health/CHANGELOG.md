@@ -8,6 +8,13 @@
 
 ---
 
+## [0.3.1] — 2026-05
+
+### Corrigido
+- `examples/registrar-health-no-app-module.md`: caminho `./database/database.module` atualizado para `./infrastructure/database/database.module` — reflete a reestruturação do diretório de infraestrutura no projeto
+
+---
+
 ## [0.3.0] — 2026-05
 
 ### Adicionado
