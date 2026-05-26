@@ -8,6 +8,18 @@
 
 ---
 
+## [0.3.0] — 2026-05
+
+### Adicionado
+- `behavior.md`: indicador Redis condicional ao `/health/ready` quando `REDIS_HOST` está presente; edge cases de Redis indisponível e recuperação automática
+- `contracts.md`: indicador `redis` na tabela de indicadores com coluna de condição de ativação; instrução no `agents.md` atualizada
+- `acceptance.md`: AC-09 (Redis up quando acessível), AC-10 (503 quando Redis indisponível); AC-09 anterior renumerado para AC-11
+- `decisions.md`: ADR-007 — indicador Redis condicional baseado em `REDIS_HOST`
+- `integration.md`: dependência opcional de `setup/nestjs/nestjs-queue`
+- `examples/health-redis-indicator.md`: exemplo de implementação do `RedisHealthIndicator`
+
+---
+
 ## [0.2.0] — 2026-05
 
 ### Adicionado

@@ -54,7 +54,17 @@
 - **Quando** `GET /health/ready` é chamado
 - **Então** a resposta é HTTP 503 com `database` e `memory_heap` ambos listados no campo `error`
 
-**AC-09 — Limites de memória padrão são aplicados quando variáveis não estão definidas**
+**AC-09 — Redis monitorado no readiness quando configurado**
+- **Dado** que `setup/nestjs/nestjs-queue` está aplicado e o Redis está acessível
+- **Quando** `GET /health/ready` é chamado
+- **Então** a resposta inclui o indicador `redis` com `status: "up"` nos campos `info` e `details`
+
+**AC-10 — Readiness retorna 503 quando Redis está indisponível**
+- **Dado** que `setup/nestjs/nestjs-queue` está aplicado e o Redis está inacessível
+- **Quando** `GET /health/ready` é chamado
+- **Então** a resposta é HTTP 503 com o indicador `redis` com `status: "down"` no campo `error`; `/health/live` continua retornando 200
+
+**AC-11 — Limites de memória padrão são aplicados quando variáveis não estão definidas**
 - **Dado** que `HEALTH_MEMORY_HEAP_THRESHOLD_MB` e `HEALTH_MEMORY_RSS_THRESHOLD_MB` não estão definidas no `.env`
 - **Quando** a aplicação sobe
 - **Então** os limites de 150 MB (heap) e 300 MB (RSS) são aplicados automaticamente pelo valor padrão do Joi
@@ -69,6 +79,7 @@
 - `HealthModule` registrado em módulo de feature em vez do `AppModule`
 - Limites de memória hardcoded no código em vez de lidos do `ConfigService`
 - Formato de resposta diferente do padrão Terminus
+- Indicador `redis` ausente do readiness quando `REDIS_HOST` está configurado
 
 ---
 
