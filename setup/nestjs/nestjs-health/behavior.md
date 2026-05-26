@@ -22,7 +22,7 @@ Garantir que todo projeto NestJS exponha endpoints padronizados de liveness e re
 ## Regras de negócio
 
 - `/health/live` nunca verifica dependências externas — sua única responsabilidade é confirmar que o processo Node.js está em execução e respondendo
-- `/health/ready` verifica banco de dados e memória (heap e RSS) antes de sinalizar que a aplicação está apta a receber tráfego
+- `/health/ready` verifica banco de dados, memória (heap e RSS) e, quando `setup/nestjs/nestjs-queue` está aplicado, Redis antes de sinalizar que a aplicação está apta a receber tráfego
 - Quando todos os indicadores de `/health/ready` passam, a resposta é HTTP 200; quando qualquer indicador falha, a resposta é HTTP 503
 - `/health/live` responde sempre HTTP 200 enquanto o processo estiver no ar — uma falha no banco não altera seu comportamento
 - Os limites de memória são lidos do `ConfigService` — os valores padrão são 150 MB para heap e 300 MB para RSS
@@ -43,6 +43,8 @@ Garantir que todo projeto NestJS exponha endpoints padronizados de liveness e re
 | Memória heap excede o limite | `/health/ready` retorna 503 com `memory_heap` marcado como `down` |
 | Memória RSS excede o limite | `/health/ready` retorna 503 com `memory_rss` marcado como `down` |
 | Múltiplos indicadores falhando simultaneamente | `/health/ready` retorna 503 com todos os indicadores com falha listados em `error` |
+| Redis indisponível (quando `setup/nestjs/nestjs-queue` aplicado) | `/health/ready` retorna 503 com `redis` marcado como `down`; `/health/live` retorna 200 |
+| Redis se recupera | `/health/ready` volta a retornar 200 automaticamente na próxima requisição |
 | Aplicação em inicialização (bootstrap ainda em andamento) | `/health/live` pode retornar 503 brevemente até o servidor HTTP estar pronto — comportamento do NestJS, não desta spec |
 | Variável de limite de memória ausente | O schema Joi usa o valor padrão configurado — não impede a inicialização |
 
@@ -61,5 +63,6 @@ Garantir que todo projeto NestJS exponha endpoints padronizados de liveness e re
 
 - Métricas de desempenho → ver `observability/nestjs-metrics` (a criar)
 - Logging estruturado → ver `observability/nestjs-logging` (a criar)
-- Verificação de dependências externas além do banco (ex: Redis, filas, APIs externas) → estender esta spec conforme necessário e documentar em `decisions.md`
+- Verificação de Redis: quando `setup/nestjs/nestjs-queue` está aplicado (`REDIS_HOST` presente no ambiente), um `RedisHealthIndicator` é adicionado ao `/health/ready`; o indicador cria sua própria conexão ioredis e chama `PING` — ver ADR-007 em `decisions.md` e exemplo `health-redis-indicator.md`
+- Verificação de outras dependências externas (APIs externas, etc.) → estender esta spec conforme necessário e documentar em `decisions.md`
 - Autenticação em endpoints de health → decisão arquitetural registrada em ADR-001
