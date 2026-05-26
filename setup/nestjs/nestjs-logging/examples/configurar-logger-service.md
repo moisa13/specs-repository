@@ -6,7 +6,7 @@
 
 ---
 
-## src/logger/logger.service.ts
+## src/infrastructure/logger/logger.service.ts
 
 ```typescript
 import { Injectable, LoggerService as NestLoggerService } from '@nestjs/common';

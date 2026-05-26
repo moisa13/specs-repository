@@ -32,7 +32,7 @@
 
 O arquivo `agents.md` é criado na raiz do projeto junto com a inicialização. Ele registra convenções, decisões e padrões do projeto em linguagem direta para agentes. Cada spec aplicada ao projeto acrescenta sua própria seção. Ver conteúdo inicial em `examples/gerar-agents-md.md`.
 
-Todos os módulos da aplicação — sejam de infraestrutura (ex: `app-info`, `health`) ou de domínio (ex: `users`, `orders`) — residem em `src/modules/`. Os diretórios `src/common/`, `src/config/` e `src/database/` são transversais e ficam fora de `src/modules/`.
+Todos os módulos da aplicação — sejam de infraestrutura (ex: `app-info`, `health`) ou de domínio (ex: `users`, `orders`) — residem em `src/modules/`. Os diretórios `src/common/`, `src/config/` e `src/infrastructure/` são transversais e ficam fora de `src/modules/`.
 
 ## Conteúdo mínimo do .gitignore
 

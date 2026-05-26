@@ -14,7 +14,7 @@ pnpm add @bull-board/api @bull-board/nestjs @bull-board/express
 
 ---
 
-## `src/queue/queue.module.ts` (com Bull Board)
+## `src/infrastructure/queue/queue.module.ts` (com Bull Board)
 
 ```typescript
 import { BullModule } from '@nestjs/bullmq';

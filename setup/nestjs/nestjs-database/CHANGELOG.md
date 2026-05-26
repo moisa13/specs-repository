@@ -8,6 +8,13 @@
 
 ---
 
+## [0.2.1] — 2026-05
+
+### Corrigido
+- `behavior.md`, `contracts.md`, `examples/`: caminhos `src/database/` atualizados para `src/infrastructure/database/` — reflete a reestruturação do diretório de infraestrutura no projeto
+
+---
+
 ## [0.2.0] — 2026-05
 
 ### Adicionado

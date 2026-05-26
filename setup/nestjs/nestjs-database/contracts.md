@@ -8,10 +8,11 @@
 
 ```
 src/
-└── database/
-    ├── database.module.ts
-    ├── data-source.ts
-    └── migrations/
+└── infrastructure/
+    └── database/
+        ├── database.module.ts
+        ├── data-source.ts
+        └── migrations/
 ```
 
 ---
@@ -90,7 +91,7 @@ O `TypeOrmModule.forRootAsync` deve ser configurado com as seguintes opções:
 
 ## DataSource para o TypeORM CLI
 
-O arquivo `src/database/data-source.ts` é usado exclusivamente pelo TypeORM CLI e não é importado pela aplicação NestJS. Lê variáveis de ambiente diretamente via `process.env`.
+O arquivo `src/infrastructure/database/data-source.ts` é usado exclusivamente pelo TypeORM CLI e não é importado pela aplicação NestJS. Lê variáveis de ambiente diretamente via `process.env`.
 
 | Opção | Valor |
 |-------|-------|
@@ -102,7 +103,7 @@ O arquivo `src/database/data-source.ts` é usado exclusivamente pelo TypeORM CLI
 | `database` | `process.env.DB_NAME` |
 | `ssl` | `process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false` |
 | `entities` | `['src/**/*.entity.ts']` |
-| `migrations` | `['src/database/migrations/*.ts']` |
+| `migrations` | `['src/infrastructure/database/migrations/*.ts']` |
 | `synchronize` | `false` |
 
 ---
@@ -113,10 +114,10 @@ Os scripts abaixo devem ser adicionados ao `package.json`:
 
 | Script | Comando | Finalidade |
 |--------|---------|------------|
-| `migration:generate` | `typeorm-ts-node-commonjs migration:generate -d src/database/data-source.ts --` | Gera migration a partir da diferença entre entidades e banco |
+| `migration:generate` | `typeorm-ts-node-commonjs migration:generate -d src/infrastructure/database/data-source.ts --` | Gera migration a partir da diferença entre entidades e banco |
 | `migration:create` | `typeorm-ts-node-commonjs migration:create --` | Cria arquivo de migration vazio para escrita manual |
-| `migration:run` | `typeorm-ts-node-commonjs migration:run -d src/database/data-source.ts` | Executa migrations pendentes |
-| `migration:revert` | `typeorm-ts-node-commonjs migration:revert -d src/database/data-source.ts` | Reverte a última migration aplicada |
+| `migration:run` | `typeorm-ts-node-commonjs migration:run -d src/infrastructure/database/data-source.ts` | Executa migrations pendentes |
+| `migration:revert` | `typeorm-ts-node-commonjs migration:revert -d src/infrastructure/database/data-source.ts` | Reverte a última migration aplicada |
 
 > `typeorm-ts-node-commonjs` é um binário incluído no pacote `typeorm` que executa o CLI com suporte a TypeScript via `ts-node`. Não requer instalação separada.
 
@@ -128,13 +129,13 @@ Os scripts abaixo devem ser adicionados ao `package.json`:
 
 ```bash
 # Gera migration a partir das entidades (nome descreve a operação)
-pnpm migration:generate src/database/migrations/CreateUsersTable
+pnpm migration:generate src/infrastructure/database/migrations/CreateUsersTable
 
 # Cria arquivo de migration vazio
-pnpm migration:create src/database/migrations/SeedInitialRoles
+pnpm migration:create src/infrastructure/database/migrations/SeedInitialRoles
 ```
 
-O caminho deve sempre apontar para `src/database/migrations/<NomeDaMigration>` — sem extensão, pois o TypeORM adiciona o timestamp e o `.ts` automaticamente.
+O caminho deve sempre apontar para `src/infrastructure/database/migrations/<NomeDaMigration>` — sem extensão, pois o TypeORM adiciona o timestamp e o `.ts` automaticamente.
 
 ---
 
@@ -148,7 +149,7 @@ O nome deve descrever a operação no formato `PascalCase`:
 - `AddEmailIndexToUsers`
 - `RenameColumnNameToFullName`
 
-Exemplo de arquivo gerado: `src/database/migrations/1716234567890-CreateUsersTable.ts`
+Exemplo de arquivo gerado: `src/infrastructure/database/migrations/1716234567890-CreateUsersTable.ts`
 
 ---
 
@@ -164,6 +165,6 @@ Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
 - `synchronize` é sempre `false` — nunca habilitar, nem em desenvolvimento
 - Migrations rodam automaticamente apenas em `NODE_ENV === 'development'`; em produção, executar `pnpm migration:run` manualmente antes de subir a aplicação
 - Nomenclatura de migrations: PascalCase descrevendo a operação (`CreateUsersTable`, `AddEmailIndexToUsers`)
-- Caminho das migrations: `src/database/migrations/`
+- Caminho das migrations: `src/infrastructure/database/migrations/`
 - Nunca fazer alterações de schema diretamente no banco — toda mudança passa por migration
 ```

@@ -4,7 +4,7 @@
 
 Módulo de infraestrutura responsável por configurar a conexão com o PostgreSQL via TypeORM. Registrado no `AppModule` ao lado do `ConfigModule`.
 
-Caminho do arquivo: `src/database/database.module.ts`
+Caminho do arquivo: `src/infrastructure/database/database.module.ts`
 
 ---
 

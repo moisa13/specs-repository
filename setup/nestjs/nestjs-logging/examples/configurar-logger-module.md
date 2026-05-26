@@ -6,7 +6,7 @@
 
 ---
 
-## src/logger/logger.module.ts
+## src/infrastructure/logger/logger.module.ts
 
 ```typescript
 import { Global, Module } from '@nestjs/common';
@@ -31,8 +31,8 @@ export class LoggerModule {}
 ```typescript
 import { Module } from '@nestjs/common';
 import { APP_INTERCEPTOR } from '@nestjs/core';
-import { LoggerModule } from './logger/logger.module';
-import { LoggingInterceptor } from './logger/logging.interceptor';
+import { LoggerModule } from './infrastructure/logger/logger.module';
+import { LoggingInterceptor } from './infrastructure/logger/logging.interceptor';
 
 @Module({
   imports: [LoggerModule],

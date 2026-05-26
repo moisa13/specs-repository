@@ -6,7 +6,7 @@ Implementação do `QueueService`, único provider que acessa `@InjectQueue`. Ex
 
 ---
 
-## `src/queue/queue.service.ts`
+## `src/infrastructure/queue/queue.service.ts`
 
 ```typescript
 import { InjectQueue } from '@nestjs/bullmq';
