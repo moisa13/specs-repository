@@ -1,6 +1,16 @@
 # Specs Repository
 
-> Catálogo de especificações de comportamento reutilizáveis — agnósticas de stack, prontas para uso com Code Agents.
+> Catálogo de especificações de comportamento reutilizáveis — agnósticas de stack (quando possível), prontas para uso com Code Agents.
+
+---
+
+## Motivação
+
+Todo sistema tem módulos comuns: login, auditoria, cache, filas, logging. A tendência natural é replanejar esses módulos do zero em cada projeto — com variações sutis que acumulam inconsistência ao longo do tempo.
+
+Este repositório aplica Spec-Driven Development a esse problema: a spec é escrita uma vez, validada, e reutilizada como fonte de verdade em qualquer projeto que precise daquele comportamento. A implementação deriva da spec — não o contrário.
+
+**O resultado:** você para de tomar as mesmas decisões repetidas vezes, e os Code Agents param de inventar comportamento que já foi especificado.
 
 ---
 
@@ -19,10 +29,10 @@
 
 ```
 specs-repo/
-├── README.md             ← visão geral e convenções do repositório
 ├── agents.md             ← instruções para Code Agents (inclua sempre no prompt)
 ├── contributing.md       ← fluxo Git Flow para criar e editar specs
 ├── index.md              ← catálogo de todos os módulos
+├── README.md             ← visão geral e convenções do repositório
 │
 ├── _meta/                ← como usar e contribuir
 │   ├── how-to-use.md
@@ -31,14 +41,14 @@ specs-repo/
 │   └── glossary.md
 │
 └── _template/            ← template base para novos módulos
+    ├── CHANGELOG.md
     ├── README.md
     ├── context.md
+    ├── integration.md
     ├── behavior.md
     ├── contracts.md
-    ├── integration.md
-    ├── acceptance.md
     ├── decisions.md
-    ├── CHANGELOG.md
+    ├── acceptance.md
     └── examples/
         └── template.md       ← renomeie para [ação]-[resultado].md
 ```
