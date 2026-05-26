@@ -63,6 +63,5 @@ Garantir que todo projeto NestJS exponha endpoints padronizados de liveness e re
 
 - Métricas de desempenho → ver `observability/nestjs-metrics` (a criar)
 - Logging estruturado → ver `observability/nestjs-logging` (a criar)
-- Verificação de Redis: quando `setup/nestjs/nestjs-queue` está aplicado (`REDIS_HOST` presente no ambiente), um `RedisHealthIndicator` é adicionado ao `/health/ready`; o indicador cria sua própria conexão ioredis e chama `PING` — ver ADR-007 em `decisions.md` e exemplo `health-redis-indicator.md`
 - Verificação de outras dependências externas (APIs externas, etc.) → estender esta spec conforme necessário e documentar em `decisions.md`
 - Autenticação em endpoints de health → decisão arquitetural registrada em ADR-001
