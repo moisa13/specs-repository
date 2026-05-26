@@ -7,7 +7,7 @@
 **Spec version:** 0.1.0
 **Status:** 📝 rascunho
 **Última revisão:** 2026-05
-**Revisado por:** —
+**Revisado por:** Moiséis Almeida
 
 ---
 

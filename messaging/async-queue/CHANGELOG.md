@@ -10,6 +10,11 @@
 
 ## [0.1.0] — 2026-05
 
+### Corrigido
+- `behavior.md`: fluxo de retry passo 3 — status durante backoff é `delayed`, não `waiting`; remoção da afirmação incorreta de que `delayed` é exclusivo do delay de produção
+- `acceptance.md`: AC-04 atualizado para refletir transição `active → delayed → waiting` durante retry com backoff configurado
+- `examples/retry-exhausted-dlq.md`: status das tentativas 1 e 2 corrigido de `waiting` para `delayed`
+
 ### Adicionado
 - Versão inicial da spec
 - Fluxo principal de produção e consumo de jobs
