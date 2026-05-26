@@ -11,6 +11,19 @@
 ## [Não lançado]
 
 ### Adicionado
+-
+
+### Alterado
+-
+
+### Removido
+-
+
+---
+
+## [0.2.0] — 2026-05
+
+### Adicionado
 - Comportamento de publicação de evento para `delete` (além de `deletePattern`) em `behavior.md` e `contracts.md`
 - Regra: nenhum evento publicado quando `deletePattern` não corresponde a nenhuma chave
 - Guidance sobre TTL do lock distribuído em `behavior.md`
@@ -28,9 +41,6 @@
 - `integration.md`: referência a `GenericCacheService` removida da spec de negócio — detalhe de implementação NestJS
 - `contracts.md` (seção agents.md): adicionadas regras de chave de lock e arredondamento de TTL
 - AC-10 a AC-15 renumerados por inserção de novos critérios
-
-### Removido
--
 
 ---
 
