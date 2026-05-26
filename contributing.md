@@ -1,4 +1,4 @@
-# Contributing
+# Guia de Contribuição
 
 Este guia define como colaborar neste repositório usando Git Flow.
 
@@ -93,7 +93,7 @@ ação(escopo): descrição curta no imperativo
 | `test` | Adição ou correção de exemplos em `examples/` |
 | `deprecate` | Marcação de spec como depreciada |
 | `chore` | Mudanças estruturais sem impacto em conteúdo (renomear arquivo, reorganizar pasta) |
-| `docs` | Mudanças em `_meta/`, `README.md`, `index.md`, `agents.md`, `contributing.md` |
+| `docs` | Mudanças em arquivos de suporte do repositório que não fazem parte de uma spec |
 
 ### Exemplos
 
@@ -173,21 +173,3 @@ O status no `index.md` e no `README.md` do módulo devem sempre estar em sincron
 # → status: 🗄️ depreciado
 ```
 
----
-
-## Inicializando o repositório (primeira vez)
-
-```bash
-git init
-git remote add origin [url-do-repositório]
-
-git checkout -b develop
-git add .
-git commit -m "chore: estrutura inicial do repositório de specs"
-git push -u origin develop
-
-git checkout -b main
-git push -u origin main
-
-# Defina develop como branch padrão no GitHub/GitLab
-```
