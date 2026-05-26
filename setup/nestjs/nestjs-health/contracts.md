@@ -140,12 +140,13 @@ O Terminus retorna um envelope padrão em ambos os endpoints. Os campos `info` e
 
 ## Nomes dos indicadores
 
-| Indicador | Nome no JSON | Endpoint |
-|-----------|-------------|----------|
-| Processo ativo | `live` | `/health/live` |
-| Banco de dados | `database` | `/health/ready` |
-| Memória heap | `memory_heap` | `/health/ready` |
-| Memória RSS | `memory_rss` | `/health/ready` |
+| Indicador | Nome no JSON | Endpoint | Condição |
+|-----------|-------------|----------|----------|
+| Processo ativo | `live` | `/health/live` | sempre |
+| Banco de dados | `database` | `/health/ready` | sempre |
+| Memória heap | `memory_heap` | `/health/ready` | sempre |
+| Memória RSS | `memory_rss` | `/health/ready` | sempre |
+| Redis | `redis` | `/health/ready` | quando `REDIS_HOST` está configurado (`setup/nestjs/nestjs-queue` aplicado) |
 
 ---
 
@@ -157,7 +158,7 @@ Ao aplicar esta spec, acrescentar a seção abaixo ao `agents.md` do projeto:
 ## Health check (setup/nestjs/nestjs-health)
 
 - `/health/live` nunca verifica dependências externas — apenas confirma que o processo está respondendo; sempre retorna 200
-- `/health/ready` verifica banco de dados e memória (heap e RSS); retorna 200 quando todos os indicadores estão saudáveis e 503 quando qualquer um falha; novos indicadores de dependências externas entram aqui
+- `/health/ready` verifica banco de dados, memória (heap e RSS) e Redis (quando `REDIS_HOST` configurado); retorna 200 quando todos os indicadores estão saudáveis e 503 quando qualquer um falha; novos indicadores de dependências externas entram aqui
 - O Terminus verifica todos os indicadores em paralelo; a resposta reporta cada um individualmente nos campos `info`, `error` e `details` — um indicador com falha não impede o reporte dos demais
 - Os limites de memória têm padrões via Joi (`HEALTH_MEMORY_HEAP_THRESHOLD_MB=150`, `HEALTH_MEMORY_RSS_THRESHOLD_MB=300`) — sobrepor via `.env` se o perfil de memória da aplicação exigir
 - Endpoints de health não têm autenticação — devem ser acessíveis por orquestradores e load balancers sem credenciais

@@ -27,7 +27,9 @@ Consulte [`_meta/prompt-recipes.md`](./_meta/prompt-recipes.md) para templates d
 |--------|-----------|--------|--------|
 | [`setup/nestjs/nestjs-init`](./setup/nestjs/nestjs-init/README.md) | Estrutura base e configuração global de um projeto NestJS para APIs | 0.3.0 | ✅ pronto |
 | [`setup/nestjs/nestjs-database`](./setup/nestjs/nestjs-database/README.md) | Conexão com PostgreSQL via TypeORM e configuração de migrations em projetos NestJS | 0.2.0 | ✅ pronto |
-| [`setup/nestjs/nestjs-health`](./setup/nestjs/nestjs-health/README.md) | Endpoints de liveness e readiness via `@nestjs/terminus` com verificação de banco e memória | 0.2.0 | ✅ pronto |
+| [`setup/nestjs/nestjs-health`](./setup/nestjs/nestjs-health/README.md) | Endpoints de liveness e readiness via `@nestjs/terminus` com verificação de banco e memória | 0.3.0 | ✅ pronto |
+| [`messaging/async-queue`](./messaging/async-queue/README.md) | Comportamento de produção e consumo de jobs em filas assíncronas, com retry e dead letter queue | 0.1.0 | ✅ pronto |
+| [`setup/nestjs/nestjs-queue`](./setup/nestjs/nestjs-queue/README.md) | Implementação de filas assíncronas com BullMQ e Redis em projetos NestJS, com módulo centralizado | 0.1.0 | ✅ pronto |
 
 ---
 

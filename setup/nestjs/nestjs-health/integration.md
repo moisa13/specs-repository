@@ -8,6 +8,7 @@
 |--------|-------------|-----------|
 | `setup/nestjs/nestjs-init` | ✅ | `ConfigService` para leitura dos limites de memória |
 | `setup/nestjs/nestjs-database` | ✅ | Conexão TypeORM injetada automaticamente pelo `TypeOrmHealthIndicator` |
+| `setup/nestjs/nestjs-queue` | ❌ | Quando aplicado, ativa o `RedisHealthIndicator` no readiness — `ioredis` e `REDIS_*` vars devem estar disponíveis |
 
 ---
 

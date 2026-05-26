@@ -149,3 +149,29 @@ O readiness probe poderia ser configurado apenas com verificação de memória, 
 ### Consequências
 - Projetos sem banco de dados não podem usar esta spec sem modificação
 - Caso surja a necessidade, uma variante `setup/nestjs/nestjs-health-minimal` pode ser criada cobrindo apenas liveness e memória, sem dependência de banco
+
+---
+
+## ADR-007 — Indicador Redis condicional baseado em `REDIS_HOST`
+
+**Data:** 2026-05
+**Status:** ✅ Aceito
+
+### Contexto
+Quando `setup/nestjs/nestjs-queue` é aplicado, o Redis passa a ser uma dependência crítica da aplicação. Um Redis indisponível impede o enfileiramento e consumo de jobs — a aplicação está degradada. O readiness probe deve refletir esse estado para que o orquestrador pare de rotear tráfego.
+
+### Opções consideradas
+
+| Opção | Vantagens | Desvantagens |
+|-------|-----------|--------------|
+| Indicador Redis sempre presente | Simples; sem condicional | Requer `ioredis` mesmo em projetos sem fila; falha se `REDIS_HOST` não estiver configurado |
+| Indicador Redis condicional por `REDIS_HOST` (escolhida) | Funciona com e sem a spec de filas; sem dependência desnecessária | Condicional em runtime no controller |
+| Spec separada `nestjs-health-redis` | Máxima separação de responsabilidades | Sobrecarga de spec para um indicador |
+
+### Decisão
+O `RedisHealthIndicator` é registrado no `HealthModule` e injetado no controller. O controller verifica `configService.get('REDIS_HOST')` em runtime para incluir ou não o indicador na lista do `/health/ready`. O indicador cria sua própria conexão `ioredis` — não depende nem reutiliza a conexão do BullMQ.
+
+### Consequências
+- `ioredis` deve estar instalado para o indicador funcionar — satisfeito automaticamente quando `setup/nestjs/nestjs-queue` está aplicado
+- O `RedisHealthIndicator` mantém uma conexão ioredis singleton durante o ciclo de vida da aplicação
+- Projetos sem `REDIS_HOST` nunca instanciam a conexão Redis no indicator
