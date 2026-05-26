@@ -84,7 +84,7 @@ O `@bull-board/nestjs` expõe uma rota HTTP para visualizar e gerenciar jobs em 
 - O painel expõe uma rota HTTP (padrão `/queues`) que lista filas, jobs e seus estados
 - O `QueueModule` deve ser importado no `AppModule` para que a rota `/queues` esteja disponível globalmente — ver ADR-006 em `decisions.md`
 - Todas as filas registradas em `BullModule.registerQueue` devem ser registradas também em `BullBoardModule.forFeature`; filas ausentes não aparecem no painel
-- A rota `/queues` deve ser protegida por Basic Auth via `express-basic-auth` no `main.ts`, aplicado antes do `app.listen` — obrigatório em todos os ambientes; as credenciais vêm de `BULL_BOARD_USER` e `BULL_BOARD_PASSWORD` via `ConfigService`
+- A rota `/queues` deve ser protegida por Basic Auth via `express-basic-auth` no `main.ts`, aplicado antes do `app.listen` — obrigatório em todos os ambientes; as credenciais vêm de `BULL_BOARD_USER` e `BULL_BOARD_PASSWORD` via `ConfigService`; o middleware é aplicado condicionalmente quando `REDIS_HOST` está presente (`configService.get('REDIS_HOST')`), de forma que projetos sem Redis não exijam as credenciais do painel
 
 ---
 

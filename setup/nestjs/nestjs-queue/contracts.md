@@ -8,14 +8,16 @@ As variáveis abaixo devem ser adicionadas ao schema Joi em `src/config/env.vali
 
 | Variável | Tipo | Obrigatório | Validação Joi | Descrição |
 |----------|------|-------------|---------------|-----------|
-| `REDIS_HOST` | string | ✅ | `Joi.string().required()` | Host da instância Redis |
+| `REDIS_HOST` | string | ✅* | `Joi.string().optional()` | Host da instância Redis |
 | `REDIS_PORT` | number | ❌ | `Joi.number().default(6379)` | Porta da instância Redis |
 | `REDIS_PASSWORD` | string | ❌ | `Joi.string().optional()` | Senha do Redis; omitir em ambientes sem autenticação |
 | `REDIS_DB` | number | ❌ | `Joi.number().integer().min(0).max(15).default(0)` | Banco lógico do Redis (0–15); usar para isolar as chaves do BullMQ quando a instância é compartilhada |
 | `QUEUE_DEFAULT_ATTEMPTS` | number | ❌ | `Joi.number().default(3)` | Número máximo de tentativas para todos os jobs |
 | `QUEUE_DEFAULT_BACKOFF_DELAY` | number | ❌ | `Joi.number().default(1000)` | Delay em ms para o backoff padrão: base para `exponential`, constante para `fixed` |
-| `BULL_BOARD_USER` | string | ✅ | `Joi.string().required()` | Usuário para autenticação Basic Auth do painel `/queues` |
-| `BULL_BOARD_PASSWORD` | string | ✅ | `Joi.string().required()` | Senha para autenticação Basic Auth do painel `/queues` |
+| `BULL_BOARD_USER` | string | ✅* | `Joi.string().optional()` | Usuário para autenticação Basic Auth do painel `/queues` |
+| `BULL_BOARD_PASSWORD` | string | ✅* | `Joi.string().optional()` | Senha para autenticação Basic Auth do painel `/queues` |
+
+> **✅\*** Marcado como `optional()` no schema Joi global para que projetos sem Redis possam inicializar sem esta spec aplicada. Quando `QueueModule` está carregado no `AppModule`, `REDIS_HOST`, `BULL_BOARD_USER` e `BULL_BOARD_PASSWORD` são obrigatórios em runtime — o `BullModule.forRootAsync` usa `getOrThrow` internamente e a aplicação falha na inicialização se ausentes.
 
 Adições ao `.env.example`:
 
