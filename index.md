@@ -31,7 +31,7 @@ Consulte [`_meta/prompt-recipes.md`](./_meta/prompt-recipes.md) para templates d
 | [`messaging/async-queue`](./messaging/async-queue/README.md) | Comportamento de produção e consumo de jobs em filas assíncronas, com retry e dead letter queue | 0.1.0 | ✅ pronto |
 | [`setup/nestjs/nestjs-queue`](./setup/nestjs/nestjs-queue/README.md) | Implementação de filas assíncronas com BullMQ e Redis em projetos NestJS, com módulo centralizado | 0.1.0 | ✅ pronto |
 | [`observability/structured-log`](./observability/structured-log/README.md) | Comportamento de produção, propagação e sanitização de logs estruturados em aplicações de servidor | 0.1.0 | ✅ pronto |
-| [`setup/nestjs/nestjs-logging`](./setup/nestjs/nestjs-logging/README.md) | Implementação de logging estruturado em projetos NestJS, usando Winston com rotação diária de arquivos | 0.1.0 | 📝 rascunho |
+| [`setup/nestjs/nestjs-logging`](./setup/nestjs/nestjs-logging/README.md) | Implementação de logging estruturado em projetos NestJS, usando Winston com rotação diária de arquivos | 0.1.0 | ✅ pronto |
 
 ---
 

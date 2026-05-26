@@ -27,7 +27,7 @@ Responsabilidades:
 - Receber um objeto, array ou valor primitivo como entrada
 - Aplicar sanitização recursiva até 5 níveis de profundidade
 - Retornar a versão sanitizada sem modificar o objeto original (cópia profunda)
-- Redijir campos sensíveis para `[REDACTED]` conforme regras de `contracts.md`
+- Substituir campos sensíveis por `[REDACTED]` conforme regras de `contracts.md`
 
 ### LoggerService
 
@@ -81,6 +81,18 @@ Se exceção:
 - Nenhum componente desta spec captura ou envia erros para serviços externos — essa responsabilidade pertence ao `HttpExceptionFilter` em integração com `observability/error-tracking`
 - O `LoggerModule` é `@Global()` e exporta `LoggerService` e `LogSanitizer` — sem essa anotação, filtros e guards globais que dependam de `LogSanitizer` falham na resolução de provider
 - Todo `console.log` em `main.ts` (porta, URL do Swagger, etc.) deve ser substituído por chamadas ao `LoggerService` obtido via `app.get(LoggerService)`, após `app.useLogger()` — garante que todo output de inicialização passe pelo pipeline Winston
+
+---
+
+## Edge cases
+
+| Situação | Comportamento esperado |
+|----------|----------------------|
+| `LoggerModule` não importado no `AppModule` antes do `bootstrap()` | `app.get(LoggerService)` lança `UnknownElementException`; a aplicação não sobe |
+| `LOG_LEVEL` ausente no `.env` | Joi aplica o padrão dinâmico: `warn` em produção, `debug` em qualquer outro ambiente |
+| `NODE_ENV=production` | Transporte `Console` não é adicionado ao Winston; apenas os dois `DailyRotateFile` ficam ativos |
+| Exceção lançada durante o processamento da requisição | `LoggingInterceptor` não intercepta a exceção — o `tap()` não é executado; `HttpExceptionFilter` é responsável por logar o erro |
+| `context` não fornecido ao `LoggerService` | Campo `context` é omitido da entrada de log; nunca serializado como `null` ou `undefined` |
 
 ---
 

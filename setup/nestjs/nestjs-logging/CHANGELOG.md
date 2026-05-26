@@ -30,4 +30,4 @@
 - Contratos de variáveis de ambiente e schema Joi
 - Convenções de nomenclatura e localização de arquivos
 - Adições ao `agents.md`
-- ADR-001 e ADR-002
+- ADR-001, ADR-002 e ADR-003
