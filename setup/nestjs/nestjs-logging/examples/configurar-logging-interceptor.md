@@ -39,8 +39,8 @@ export class LoggingInterceptor implements NestInterceptor {
 
 ```typescript
 import { APP_INTERCEPTOR } from '@nestjs/core';
-import { LoggerModule } from './logger/logger.module';
-import { LoggingInterceptor } from './logger/logging.interceptor';
+import { LoggerModule } from './infrastructure/logger/logger.module';
+import { LoggingInterceptor } from './infrastructure/logger/logging.interceptor';
 
 @Module({
   imports: [LoggerModule],

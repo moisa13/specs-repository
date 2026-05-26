@@ -14,7 +14,7 @@ Caminho do arquivo: `src/app.module.ts`
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppInfoModule } from './modules/app-info/app-info.module';
-import { DatabaseModule } from './database/database.module';
+import { DatabaseModule } from './infrastructure/database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
 @Module({
