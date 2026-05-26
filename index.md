@@ -34,6 +34,7 @@ Consulte [`_meta/prompt-recipes.md`](./_meta/prompt-recipes.md) para templates d
 | [`setup/nestjs/nestjs-logging`](./setup/nestjs/nestjs-logging/README.md) | Implementação de logging estruturado em projetos NestJS, usando Winston com rotação diária de arquivos | 0.1.1 | ✅ pronto |
 | [`caching/cache`](./caching/cache/README.md) | Comportamento de cache de dados com cache-aside, double-checked locking, invalidação e aquecimento no boot | 0.2.0 | ✅ pronto |
 | [`setup/nestjs/nestjs-cache`](./setup/nestjs/nestjs-cache/README.md) | Implementação de cache de dados em projetos NestJS usando ioredis, com CacheService, GenericCacheService e CacheWarmingService | 0.2.0 | ✅ pronto |
+| [`messaging/realtime`](./messaging/realtime/README.md) | Comportamento de um canal de comunicação persistente entre servidor e clientes, com autenticação no handshake e entrega bidirecional de eventos | 0.1.0 | 📝 rascunho |
 
 ---
 
